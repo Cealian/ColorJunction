@@ -23,6 +23,7 @@ namespace ColorJunction
         public MainWindow()
         {
             InitializeComponent();
+            //hej
         }
     }
 }
