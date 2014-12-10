@@ -2,5 +2,5 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
-    <Canvas  Name="gameCanvas" Height="300" Width="200"></Canvas>
+    <Canvas Name="gameCanvas" Height="300" Width="200"></Canvas>
 </Window>
