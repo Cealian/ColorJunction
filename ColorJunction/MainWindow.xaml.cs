@@ -28,6 +28,8 @@ namespace ColorJunction
 
         private void fillGrid() 
         {
+            Random rnd = new Random();
+            
             for (int i = 0; i < 100; i++)
             {
                 Rectangle rect = new Rectangle();
@@ -36,7 +38,8 @@ namespace ColorJunction
                 rect.Width = 20;
 
                 Brush col;
-                switch (i%4)
+                int rndInt = rnd.Next(0, 4);
+                switch (rndInt)
                 {
                     case 0:
                         col = Brushes.Blue;
@@ -47,8 +50,11 @@ namespace ColorJunction
                     case 2:
                         col = Brushes.Green;
                         break;
-                    default:
+                    case 3:
                         col = Brushes.Red;
+                        break;
+                    default:
+                        col = Brushes.Black;
                         break;
                 }
 
@@ -57,11 +63,21 @@ namespace ColorJunction
                 gameCanvas.Children.Add(rect);
 
                 double top = gameCanvas.Height - (20 * ((i % 10) + 1));
-                double left = 0;
+                double left = (i/10)*20;
 
                 Canvas.SetTop(rect, top);
                 Canvas.SetLeft(rect, left);
+
+                rect.Cursor = Cursors.Hand;
+
+                rect.MouseUp += rect_MouseUp;
             }
+        }
+
+        void rect_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Rectangle clickedRect = sender as Rectangle;
+            gameCanvas.Children.Remove(clickedRect);
         }
     }
 }
