@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace ColorJunction
 {
@@ -60,8 +62,6 @@ namespace ColorJunction
 
                 rect.Fill = col;
 
-                gameCanvas.Children.Add(rect);
-
                 double top = gameCanvas.Height - (20 * ((i % 10) + 1));
                 double left = (i/10)*20;
 
@@ -71,6 +71,8 @@ namespace ColorJunction
                 rect.Cursor = Cursors.Hand;
 
                 rect.MouseUp += rect_MouseUp;
+
+                gameCanvas.Children.Add(rect);
             }
         }
 
