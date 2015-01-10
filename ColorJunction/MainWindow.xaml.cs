@@ -38,36 +38,28 @@ namespace ColorJunction
 
                 rect.Height = 20;
                 rect.Width = 20;
-
-                Brush col;
+                ImageBrush recImageBrush = new ImageBrush(); 
                 int rndInt = rnd.Next(0, 4);
                 switch (rndInt)
                 {
                     case 0:
-                        col = Brushes.Blue;
+                        recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
                         break;
                     case 1:
-                        col = Brushes.Yellow;
+                        recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
                         break;
                     case 2:
-                        col = Brushes.Green;
+                        recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));                       
                         break;
                     case 3:
-                        col = Brushes.Red;
+                        recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
                         break;
                     default:
-                        col = Brushes.Black;
+                        //col = Brushes.Black;
                         break;
                 }
 
-                rect.Fill = col;
-
-               //Lite kod så att vi har sen, funkar inte. vet inte vad Uri ska vara
-                /***************************************************************
-                ImageBrush recImageBrush = new ImageBrush();              
-                recImageBrush.ImageSource = new BitmapImage(new Uri("?????", UriKind.Relative));
                 rect.Fill = recImageBrush;
-               ******************************************************************/
 
                 double top = gameCanvas.Height - (20 * ((i % 10) + 1));
                 double left = (i/10)*20;
