@@ -62,6 +62,13 @@ namespace ColorJunction
 
                 rect.Fill = col;
 
+               //Lite kod så att vi har sen, funkar inte. vet inte vad Uri ska vara
+                /***************************************************************
+                ImageBrush recImageBrush = new ImageBrush();              
+                recImageBrush.ImageSource = new BitmapImage(new Uri("?????", UriKind.Relative));
+                rect.Fill = recImageBrush;
+               ******************************************************************/
+
                 double top = gameCanvas.Height - (20 * ((i % 10) + 1));
                 double left = (i/10)*20;
 
