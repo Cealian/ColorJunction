@@ -60,19 +60,24 @@ namespace ColorJunction
 
                     /* Randomize color for the rectangle */
                     Brush col;
+                    //ImageBrush recImageBrush = new ImageBrush(); 
                     int rndInt = rnd.Next(0, 4);
                     switch (rndInt)
                     {
                         case 0:
+                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
                             col = Brushes.Blue;
                             break;
                         case 1:
+                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
                             col = Brushes.Yellow;
                             break;
                         case 2:
+                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative)); 
                             col = Brushes.Green;
                             break;
                         case 3:
+                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
                             col = Brushes.Red;
                             break;
                         default: // Default not possible...
@@ -80,6 +85,7 @@ namespace ColorJunction
                             break;
                     }
                     rects[column, row].Fill = col; // Set color
+                    //rect.Fill = recImageBrush;
 
                     /* Calculate and set top-left corner position */
                     double top = gameCanvas.Height - (rectSize * row) - rectSize;
