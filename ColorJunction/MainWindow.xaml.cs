@@ -60,32 +60,32 @@ namespace ColorJunction
 
                     /* Randomize color for the rectangle */
                     Brush col;
-                    //ImageBrush recImageBrush = new ImageBrush(); 
+                    ImageBrush recImageBrush = new ImageBrush(); 
                     int rndInt = rnd.Next(0, 4);
                     switch (rndInt)
                     {
                         case 0:
-                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
+                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
                             col = Brushes.Blue;
                             break;
                         case 1:
-                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
+                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
                             col = Brushes.Yellow;
                             break;
                         case 2:
-                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative)); 
+                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative)); 
                             col = Brushes.Green;
                             break;
                         case 3:
-                            //recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
                             col = Brushes.Red;
                             break;
                         default: // Default not possible...
                             col = Brushes.Black;
                             break;
                     }
-                    rects[column, row].Fill = col; // Set color
-                    //rect.Fill = recImageBrush;
+                    rects[column, row].Stroke = col; // Set color
+                    rects[column, row].Fill = recImageBrush;
 
                     /* Calculate and set top-left corner position */
                     double top = gameCanvas.Height - (rectSize * row) - rectSize;
@@ -98,7 +98,6 @@ namespace ColorJunction
                     rects[column, row].Cursor = Cursors.Hand; // Hand cursor on hover
 
                     // Border styling
-                    rects[column, row].Stroke = borderColor;
                     rects[column, row].StrokeThickness = 0.5;
 
                     rects[column, row].MouseUp += rect_MouseUp; // Add click event
@@ -154,19 +153,19 @@ namespace ColorJunction
         /* Returns true if any nearby rctangle is same color as the clicked one, else false */
         bool checkNearbyBlocks(int row, int column, int boardSize, Brush clickedColor) {
 
-            if (row + 1 < boardSize && rects[column, row+1].Fill == clickedColor) // Check above
+            if (row + 1 < boardSize && rects[column, row+1].Stroke == clickedColor) // Check above
             {
                 return true;
             }
-            if (column + 1 < boardSize && rects[column+1, row].Fill == clickedColor) // Check right
+            if (column + 1 < boardSize && rects[column+1, row].Stroke == clickedColor) // Check right
             {
                 return true;
             }
-            if (row - 1 >= 0 && rects[column, row-1].Fill == clickedColor) // Check below
+            if (row - 1 >= 0 && rects[column, row-1].Stroke == clickedColor) // Check below
             {
                 return true;
             }
-            if (column - 1 >= 0 && rects[column-1, row].Fill == clickedColor) // Check  left
+            if (column - 1 >= 0 && rects[column-1, row].Stroke == clickedColor) // Check  left
             {
                 return true;
             }
@@ -177,7 +176,7 @@ namespace ColorJunction
         void rect_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Rectangle clickedRect = sender as Rectangle;
-            Brush clickedColor = clickedRect.Fill;
+            Brush clickedColor = clickedRect.Stroke;
             int boardSize = (int)Math.Sqrt(rects.Length);
 
             if (clickedColor == gameCanvas.Background) 
@@ -204,7 +203,7 @@ namespace ColorJunction
                 return; // Single rectangle clicked, do nothing
             }
 
-            /* Queue the clicked rectangle and check al nearby for rectangles with same color */
+            /* Queue the clicked rectangle and check all nearby for rectangles with same color */
             Queue<rectCoords> que = new Queue<rectCoords>();
             que.Enqueue(new rectCoords(column, row));
 
@@ -213,7 +212,7 @@ namespace ColorJunction
             while(que.Count > 0){
                 rectCoords rc = que.Dequeue();
 
-                if (rects[rc.column, rc.row].Fill != clickedColor)
+                if (rects[rc.column, rc.row].Stroke != clickedColor)
 	            {
 		            continue; // Current rectangle not same color, skip this one.
 	            }
@@ -255,12 +254,6 @@ namespace ColorJunction
             fillGrid(10);
 
             lblOutput.Content = "";
-
-            for (int i = 1; i <= 23; i++)
-            {
-                lblOutput.Content += i + ":" + Math.Round(Math.Pow(1.5, i)) + "\t";
-                if (i%5==0) { lblOutput.Content += "\n"; }
-            }
         }
     }
 }
