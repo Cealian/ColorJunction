@@ -247,6 +247,8 @@ namespace ColorJunction
             dropBlocks(boardSize); // Drop down rectangles with hidden rectangles directly below
 
             lblOutput.Content = points.ToString() + " (" + Math.Round(Math.Pow(1.5,points)) + " p)"; // Test score.
+
+
         }
 
         /* Right click resets with a new grid */
@@ -258,16 +260,17 @@ namespace ColorJunction
             lblOutput.Content = "";
         }
 
-        /*On MouseOver rectanglar osynliga */
+        /*On MouseOver rectangle fade */
        void rect_MouseEnter(object Sender, MouseEventArgs e)
        {
-               Rectangle rec = (Rectangle)Sender;
-               DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(0.5));
-               rec.BeginAnimation(Rectangle.OpacityProperty, animation);
+           
+          Rectangle rec = (Rectangle)Sender;
+          DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(0.5));
+          rec.BeginAnimation(Rectangle.OpacityProperty, animation);
 
        }
 
-        /*On MouseLeave rectanglar  */
+        /*On MouseLeave rectangle show */
        void rect_MouseLeave(object Sender, MouseEventArgs e)
        {
            Rectangle rec = (Rectangle)Sender;
