@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
-
+using System.Windows.Media.Animation;
 namespace ColorJunction
 {
 
@@ -101,7 +101,8 @@ namespace ColorJunction
                     rects[column, row].StrokeThickness = 0.5;
 
                     rects[column, row].MouseUp += rect_MouseUp; // Add click event
-
+                    rects[column, row].MouseEnter += rect_MouseEnter;//Add MouseEnter event
+                    rects[column, row].MouseLeave += rect_MouseLeave;//Add MouseLeave event
                     gameCanvas.Children.Add(rects[column, row]); // Add rectangle to canvas
                 }
             }
@@ -221,6 +222,7 @@ namespace ColorJunction
                 rects[rc.column, rc.row].Fill = gameCanvas.Background;
                 rects[rc.column, rc.row].Stroke = gameCanvas.Background;
 
+
                 points++;
 
                 /* Queue nearby rectangles */
@@ -255,5 +257,22 @@ namespace ColorJunction
 
             lblOutput.Content = "";
         }
+
+        /*On MouseOver rectanglar osynliga */
+       void rect_MouseEnter(object Sender, MouseEventArgs e)
+       {
+               Rectangle rec = (Rectangle)Sender;
+               DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(0.5));
+               rec.BeginAnimation(Rectangle.OpacityProperty, animation);
+
+       }
+
+        /*On MouseLeave rectanglar  */
+       void rect_MouseLeave(object Sender, MouseEventArgs e)
+       {
+           Rectangle rec = (Rectangle)Sender;
+           DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.5));
+           rec.BeginAnimation(Rectangle.OpacityProperty, animation);
+       }
     }
 }
