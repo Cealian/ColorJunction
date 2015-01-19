@@ -262,12 +262,12 @@ namespace ColorJunction
 
         /*On MouseOver rectangle fade */
        void rect_MouseEnter(object Sender, MouseEventArgs e)
-       {
-           
-          Rectangle rec = (Rectangle)Sender;
-          DoubleAnimation animation = new DoubleAnimation(0, TimeSpan.FromSeconds(0.5));
-          rec.BeginAnimation(Rectangle.OpacityProperty, animation);
-
+       {           
+               Rectangle rec = (Rectangle)Sender;
+               DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)));
+               animation.AutoReverse = true;
+               animation.RepeatBehavior = new RepeatBehavior(TimeSpan.FromHours(1));
+               rec.BeginAnimation(Rectangle.OpacityProperty, animation);
        }
 
         /*On MouseLeave rectangle show */
