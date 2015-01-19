@@ -106,7 +106,7 @@ namespace ColorJunction
                     gameCanvas.Children.Add(rects[column, row]); // Add rectangle to canvas
                 }
             }
-        }
+        }/****************************************************************************/
 
 
         /* Drops down blocks with no block directly underneath */
@@ -149,7 +149,7 @@ namespace ColorJunction
                     }
                 }
             }
-        }
+        }/******************************************************************************/
 
         /* Returns true if any nearby rctangle is same color as the clicked one, else false */
         bool checkNearbyBlocks(int row, int column, int boardSize, Brush clickedColor) {
@@ -172,7 +172,7 @@ namespace ColorJunction
             }
 
             return false; // No rectangles with same color
-        }
+        }/****************************************************************************/
 
         void rect_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -249,7 +249,7 @@ namespace ColorJunction
             lblOutput.Content = points.ToString() + " (" + Math.Round(Math.Pow(1.5,points)) + " p)"; // Test score.
 
 
-        }
+        }/*********************************************************************/
 
         /* Right click resets with a new grid */
         private void gameCanvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
@@ -258,24 +258,52 @@ namespace ColorJunction
             fillGrid(10);
 
             lblOutput.Content = "";
-        }
+        }/********************************************************************/
 
-        /*On MouseOver rectangle fade */
+        
+        /*On MouseOver rectangle pulse */
        void rect_MouseEnter(object Sender, MouseEventArgs e)
-       {           
-               Rectangle rec = (Rectangle)Sender;
+       {
+
+           int column = -1, row = -1;
+           Rectangle rec = (Rectangle)Sender;
+           Brush clickedColor = rec.Stroke;
+           int boardSize = (int)Math.Sqrt(rects.Length);
+
+           for (int i = 0; i < boardSize && row < 0; i++)
+           {
+               for (int j = 0; j < boardSize && row < 0; j++)
+               {
+                   if (rects[i, j] == rec)
+                   {
+                       column = i;
+                       row = j;
+                   }
+               }
+           }
+
+           if (!checkNearbyBlocks(row, column, boardSize, clickedColor))
+           {
+               return; // Single rectangle clicked, do nothing
+           }
+          
+
                DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)));
                animation.AutoReverse = true;
                animation.RepeatBehavior = new RepeatBehavior(TimeSpan.FromHours(1));
                rec.BeginAnimation(Rectangle.OpacityProperty, animation);
-       }
 
+           
+       }//**********************************************************************
+
+        
         /*On MouseLeave rectangle show */
        void rect_MouseLeave(object Sender, MouseEventArgs e)
        {
            Rectangle rec = (Rectangle)Sender;
            DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.5));
            rec.BeginAnimation(Rectangle.OpacityProperty, animation);
-       }
+       }/*******************************************************************/
+        
     }
 }
