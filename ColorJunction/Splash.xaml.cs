@@ -20,6 +20,7 @@ namespace ColorJunction
     public partial class Splash : Window
     {
         MainWindow m = new MainWindow();
+        
 
         public Splash()
         {
@@ -40,6 +41,13 @@ namespace ColorJunction
         {
             this.Close();
             m.Show();
+        }
+
+        private void ExtrasBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Tutorial t = new Tutorial();
+            this.Close();
+            t.Show();
         }
     }
 }
