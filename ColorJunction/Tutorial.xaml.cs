@@ -30,5 +30,10 @@ namespace ColorJunction
             this.Close();
             s.Show();
         }
+
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
