@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Windows.Media.Animation;
+
 namespace ColorJunction
 {
 
@@ -30,8 +31,7 @@ namespace ColorJunction
     /// </summary>
     public partial class MainWindow : Window
     {
-        Rectangle[,] rects; // Rectangles are saved here.
-        Brush borderColor = Brushes.Gray; // Set border color here
+        int _score = 0;
 
         public MainWindow()
         {
@@ -39,271 +39,535 @@ namespace ColorJunction
             fillGrid(10);
         }
 
-
-        /* Fills the gameCanvas with boardSize*boardSize rectangles */
-        private void fillGrid(int boardSize) 
+        private void fillGrid(int columns)
         {
+            _score = 0;
+
+            lblScore.Content = "Score: 0";
+
             Random rnd = new Random();
+            GridLength gridLength = new GridLength(200 / columns);
 
-            rects = new Rectangle[boardSize, boardSize];
-
-            int rectSize = 200 / boardSize; // canvas is 200 wide.
-
-            for (int column = 0; column < boardSize; column++)
+            for (int i = 0; i < columns; i++)
             {
-                for (int row = 0; row < boardSize; row++)
-                {
-                    rects[column, row] = new Rectangle();
-                    
-                    rects[column, row].Height = rectSize;
-                    rects[column, row].Width = rectSize;
 
-                    /* Randomize color for the rectangle */
-                    Brush col;
-                    ImageBrush recImageBrush = new ImageBrush(); 
-                    int rndInt = rnd.Next(0, 4);
-                    switch (rndInt)
+                ColumnDefinition col = new ColumnDefinition();
+                col.Width = gridLength;
+                gameGrid.ColumnDefinitions.Add(col);
+
+                RowDefinition row = new RowDefinition();
+                row.Height = gridLength;
+                gameGrid.RowDefinitions.Add(row);
+
+                for (int j = 0; j < columns; j++)
+                {
+                    Rectangle rect = new Rectangle();
+
+                    ImageBrush fill = new ImageBrush();
+                    Brush stroke = Brushes.Black;
+
+                    switch (rnd.Next(0, 4))
                     {
                         case 0:
-                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
-                            col = Brushes.Blue;
+                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
+                            stroke = Brushes.Blue;
                             break;
                         case 1:
-                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
-                            col = Brushes.Yellow;
+                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
+                            stroke = Brushes.Yellow;
                             break;
                         case 2:
-                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative)); 
-                            col = Brushes.Green;
+                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));
+                            stroke = Brushes.Green;
                             break;
                         case 3:
-                            recImageBrush.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
-                            col = Brushes.Red;
+                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+                            stroke = Brushes.Red;
                             break;
                         default: // Default not possible...
-                            col = Brushes.Black;
+                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
+                            stroke = Brushes.Black;
                             break;
                     }
-                    rects[column, row].Stroke = col; // Set color
-                    rects[column, row].Fill = recImageBrush;
 
-                    /* Calculate and set top-left corner position */
-                    double top = gameCanvas.Height - (rectSize * row) - rectSize;
-                    double left = rectSize * column;
 
-                    Canvas.SetTop(rects[column, row], top);
-                    Canvas.SetLeft(rects[column, row], left);
+                    rect.Fill = fill;
+                    rect.Stroke = stroke;
+                    rect.StrokeThickness = 0.5;
+                    rect.Cursor = Cursors.Hand;
 
-                    
-                    rects[column, row].Cursor = Cursors.Hand; // Hand cursor on hover
+                    rect.Width = gameGrid.Width / columns;
+                    rect.Height = rect.Width;
 
-                    // Border styling
-                    rects[column, row].StrokeThickness = 0.5;
+                    rect.MouseUp += rect_MouseUp;
+                    rect.MouseEnter += rect_MouseEnter;
+                    rect.MouseLeave += rect_MouseLeave;
 
-                    rects[column, row].MouseUp += rect_MouseUp; // Add click event
-                    rects[column, row].MouseEnter += rect_MouseEnter;//Add MouseEnter event
-                    rects[column, row].MouseLeave += rect_MouseLeave;//Add MouseLeave event
-                    gameCanvas.Children.Add(rects[column, row]); // Add rectangle to canvas
+                    Grid.SetColumn(rect, j);
+                    Grid.SetRow(rect, i);
+
+                    gameGrid.Children.Add(rect);
                 }
             }
-        }/****************************************************************************/
 
+            checkPossibleMoves();
+        }
 
-        /* Drops down blocks with no block directly underneath */
-        void dropBlocks(int boardSize) {
+        void rect_MouseLeave(object sender, MouseEventArgs e)
+        {
+            int columns = gameGrid.ColumnDefinitions.Count;
 
-            int rectSize = 200 / boardSize; // Calc rectangle size for later use
-
-            for (int i = 0; i < boardSize; i++ )
+            for (int column = 0; column < columns; column++)
             {
-                for (int column = 0; column < boardSize; column++)
+                for (int row = 0; row < columns; row++)
                 {
-                    for (int row = 1; row < boardSize; row++)
-                    {
-                        if (rects[column, row - 1].Fill == gameCanvas.Background) // If rectangle under is background colored (no block)
-                        {
-                            /* Copy rectangle one down */
-                            rects[column, row - 1].Fill = rects[column, row].Fill;
-                            rects[column, row - 1].Stroke = rects[column, row].Stroke;
+                    Rectangle r = getRectangle(column, row);
 
-                            /* Hide rectangle copied from */
-                            rects[column, row].Fill = gameCanvas.Background;
-                            rects[column, row].Stroke = gameCanvas.Background;
-                        }
+                    if (r != null)
+                    {
+                        r.Opacity = 1;
                     }
                 }
             }
+        }
 
-            /* Set cursor.arrow to all hidden rectangles */
-            for (int column = 0; column < boardSize; column++)
+        void rect_MouseEnter(object sender, MouseEventArgs e)
+        {
+            rect_MouseLeave(null, null);
+
+            Rectangle hRectangle = sender as Rectangle;
+
+            if (!isValidMove(hRectangle))
             {
-                for (int row = 0; row < boardSize; row++)
+                return;
+            }
+
+            int hColumn = Grid.GetColumn(hRectangle);
+            int hRow = Grid.GetRow(hRectangle);
+
+            Queue<Rectangle> que = new Queue<Rectangle>();
+
+            que.Enqueue(hRectangle);
+
+            while (que.Count > 0)
+            {
+                Rectangle currentRect = que.Dequeue();
+
+                int currentRow = Grid.GetRow(currentRect);
+                int currentColumn = Grid.GetColumn(currentRect);
+
+                if (currentRect.Stroke == hRectangle.Stroke)
                 {
-                    if (rects[column,row].Fill == gameCanvas.Background)
-                    {
-                        rects[column, row].Cursor = Cursors.Arrow;
-                    }
-                    else
-                    {
-                        rects[column, row].Cursor = Cursors.Hand;
-                    }
+                    currentRect.Opacity = 0.7;
+                    Rectangle r;
+
+                    r = getRectangle(currentColumn, currentRow + 1); // Up
+                    if (r != null && r.Opacity == 1) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn, currentRow - 1); // Down
+                    if (r != null && r.Opacity == 1) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn - 1, currentRow); // Left
+                    if (r != null && r.Opacity == 1) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn + 1, currentRow); // Right
+                    if (r != null && r.Opacity == 1) { que.Enqueue(r); }
+
                 }
             }
-        }/******************************************************************************/
 
-        /* Returns true if any nearby rctangle is same color as the clicked one, else false */
-        bool checkNearbyBlocks(int row, int column, int boardSize, Brush clickedColor) {
-
-            if (row + 1 < boardSize && rects[column, row+1].Stroke == clickedColor) // Check above
-            {
-                return true;
-            }
-            if (column + 1 < boardSize && rects[column+1, row].Stroke == clickedColor) // Check right
-            {
-                return true;
-            }
-            if (row - 1 >= 0 && rects[column, row-1].Stroke == clickedColor) // Check below
-            {
-                return true;
-            }
-            if (column - 1 >= 0 && rects[column-1, row].Stroke == clickedColor) // Check  left
-            {
-                return true;
-            }
-
-            return false; // No rectangles with same color
-        }/****************************************************************************/
+        }
 
         void rect_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Rectangle clickedRect = sender as Rectangle;
-            Brush clickedColor = clickedRect.Stroke;
-            int boardSize = (int)Math.Sqrt(rects.Length);
 
-            if (clickedColor == gameCanvas.Background) 
+            if (!isValidMove(clickedRect))
             {
-                return; // Hidden rectangle clicked, do nothing
+                return;
             }
 
-            /* Check all rectangles to get column and row of the clicked rectangle */
-            int column = -1, row = -1;
-            for (int i = 0; i < boardSize && row < 0; i++)
+            int clickedColumn = Grid.GetColumn(clickedRect);
+            int clickedRow = Grid.GetRow(clickedRect);
+
+            Queue<Rectangle> que = new Queue<Rectangle>();
+
+            que.Enqueue(clickedRect);
+
+            int removedRects = 0;
+
+            while (que.Count > 0)
             {
-                for (int j = 0; j < boardSize && row < 0; j++)
+                Rectangle currentRect = que.Dequeue();
+
+                int currentRow = Grid.GetRow(currentRect);
+                int currentColumn = Grid.GetColumn(currentRect);
+
+                if (currentRect.Stroke == clickedRect.Stroke)
                 {
-                    if (rects[i,j] == clickedRect)
+                    gameGrid.Children.Remove(currentRect);
+                    removedRects++;
+                    Rectangle r;
+
+                    r = getRectangle(currentColumn, currentRow + 1); // Up
+                    if (r != null) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn, currentRow - 1); // Down
+                    if (r != null) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn - 1, currentRow); // Left
+                    if (r != null) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn + 1, currentRow); // Right
+                    if (r != null) { que.Enqueue(r); }
+
+                }
+            }
+
+            int points = (removedRects - 1) * 2;
+            _score += points;
+
+            lblScore.Content = "Score: " + _score + "(+" + points + ")";
+
+            dropBlocks();
+            slideBlocks();
+            checkPossibleMoves();
+        }
+
+        void checkPossibleMoves()
+        {
+            int columns = gameGrid.ColumnDefinitions.Count;
+
+            bool movesPossible = false;
+
+            for (int column = 0; column < columns && !movesPossible; column++)
+            {
+                for (int row = 0; row < columns && !movesPossible; row++)
+                {
+                    Rectangle r = getRectangle(column, row);
+                    if (r != null && isValidMove(r))
                     {
-                        column = i;
-                        row = j;
+                        movesPossible = true;
                     }
                 }
             }
 
-            if (!checkNearbyBlocks(row, column, boardSize, clickedColor))
+            if (movesPossible)
             {
-                return; // Single rectangle clicked, do nothing
+                gameGrid.Opacity = 1;
             }
-
-            /* Queue the clicked rectangle and check all nearby for rectangles with same color */
-            Queue<rectCoords> que = new Queue<rectCoords>();
-            que.Enqueue(new rectCoords(column, row));
-
-            int points = 0;
-
-            while(que.Count > 0){
-                rectCoords rc = que.Dequeue();
-
-                if (rects[rc.column, rc.row].Stroke != clickedColor)
-	            {
-		            continue; // Current rectangle not same color, skip this one.
-	            }
-
-                /* Hide rectangle since it's the same color */
-                rects[rc.column, rc.row].Fill = gameCanvas.Background;
-                rects[rc.column, rc.row].Stroke = gameCanvas.Background;
-
-
-                points++;
-
-                /* Queue nearby rectangles */
-                if (rc.column+1 < boardSize)
-                {
-                    que.Enqueue(new rectCoords(rc.column+1, rc.row));
-                }
-                if (rc.row+1 < boardSize)
-                {
-                    que.Enqueue(new rectCoords(rc.column, rc.row + 1));
-                }
-                if (rc.column-1 >= 0)
-                {
-                    que.Enqueue(new rectCoords(rc.column - 1, rc.row));
-                }
-                if (rc.row-1 >= 0)
-                {
-                    que.Enqueue(new rectCoords(rc.column, rc.row - 1));
-                }
+            else
+            {
+                gameGrid.Opacity = 0.5;
             }
+        }
 
-            dropBlocks(boardSize); // Drop down rectangles with hidden rectangles directly below
-
-            lblOutput.Content = points.ToString() + " (" + Math.Round(Math.Pow(1.5,points)) + " p)"; // Test score.
-
-
-        }/*********************************************************************/
-
-        /* Right click resets with a new grid */
-        private void gameCanvas_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        void slideBlocks()
         {
-            gameCanvas.Children.RemoveRange(1, gameCanvas.Children.Count);
-            fillGrid(10);
+            int columns = gameGrid.ColumnDefinitions.Count;
 
-            lblOutput.Content = "";
-        }/********************************************************************/
+            for (int x = 0; x < columns; x++)
+            {
+                for (int column = columns; column > 0; column--)
+                {
+                    if (getRectangle(column, 0) == null)
+                    {
+                        for (int i = column; i < columns; i++)
+                        {
+                            for (int j = 0; j < columns; j++)
+                            {
+                                Rectangle r = getRectangle(i, j);
+                                if (r != null)
+                                {
+                                    Grid.SetColumn(r, i - 1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
-        
-        /*On MouseOver rectangle pulse */
-       void rect_MouseEnter(object Sender, MouseEventArgs e)
-       {
+        void dropBlocks()
+        {
+            int columns = gameGrid.ColumnDefinitions.Count;
 
-           int column = -1, row = -1;
-           Rectangle rec = (Rectangle)Sender;
-           Brush clickedColor = rec.Stroke;
-           int boardSize = (int)Math.Sqrt(rects.Length);
+            for (int i = 0; i < columns; i++)
+            {
+                for (int row = columns - 1; row > 0; row--)
+                {
+                    for (int column = 0; column < columns; column++)
+                    {
+                        Rectangle r = getRectangle(column, row);
 
-           for (int i = 0; i < boardSize && row < 0; i++)
-           {
-               for (int j = 0; j < boardSize && row < 0; j++)
-               {
-                   if (rects[i, j] == rec)
-                   {
-                       column = i;
-                       row = j;
-                   }
-               }
-           }
+                        if (r != null && getRectangle(column, row - 1) == null)
+                        {
+                            Grid.SetRow(r, row - 1);
+                        }
+                    }
+                }
+            }
+        }
 
-           if (!checkNearbyBlocks(row, column, boardSize, clickedColor))
-           {
-               return; // Single rectangle clicked, do nothing
-           }
-          
+        bool isValidMove(Rectangle testRectangle)
+        {
 
-               DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(0.5)));
-               animation.AutoReverse = true;
-               animation.RepeatBehavior = new RepeatBehavior(TimeSpan.FromHours(1));
-               rec.BeginAnimation(Rectangle.OpacityProperty, animation);
+            int row = Grid.GetRow(testRectangle);
+            int column = Grid.GetColumn(testRectangle);
+            Rectangle r;
 
-           
-       }//**********************************************************************
+            r = getRectangle(column, row + 1); // Up
+            if (r != null && r.Stroke == testRectangle.Stroke) { return true; }
 
-        
-        /*On MouseLeave rectangle show */
-       void rect_MouseLeave(object Sender, MouseEventArgs e)
-       {
-           Rectangle rec = (Rectangle)Sender;
-           DoubleAnimation animation = new DoubleAnimation(1, TimeSpan.FromSeconds(0.5));
-           rec.BeginAnimation(Rectangle.OpacityProperty, animation);
-       }/*******************************************************************/
-        
+            r = getRectangle(column, row - 1); // Down
+            if (r != null && r.Stroke == testRectangle.Stroke) { return true; }
+
+            r = getRectangle(column - 1, row); // Left
+            if (r != null && r.Stroke == testRectangle.Stroke) { return true; }
+
+            r = getRectangle(column + 1, row); // Right
+            if (r != null && r.Stroke == testRectangle.Stroke) { return true; }
+
+            return false;
+        }
+
+        Rectangle getRectangle(int column, int row)
+        {
+            var selectedItems = gameGrid.Children.Cast<Rectangle>().Where(i => Grid.GetRow(i) == row && Grid.GetColumn(i) == column);
+
+            if (selectedItems.Count() < 1)
+            {
+                return null;
+            }
+
+            return selectedItems.ElementAt(0);
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.F5)
+            {
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(10);
+            }
+            else if (e.Key == Key.D1)
+            {
+                gameGrid.Children.Remove(getRectangle(5, 5));
+            }
+            else if (e.Key == Key.D2)
+            {
+                getRectangle(0, 0).Fill = Brushes.Black;
+            }
+            else if (e.Key == Key.D3)
+            {
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(15);
+            }
+            else if (e.Key == Key.D4)
+            {
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                for (int row = 0; row < columns; row++)
+                {
+                    for (int column = 0; column < columns; column++)
+                    {
+                        Rectangle r = getRectangle(column, row);
+
+                        if (r != null && isValidMove(r))
+                        {
+                            if (r.Opacity < 1)
+                            {
+                                rect_MouseUp(r, null);
+                            }
+                            else
+                            {
+                                rect_MouseEnter(r, null);
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+            else if (e.Key == Key.D5)
+            {
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                for (int column = 0; column < columns; column++)
+                {
+                    for (int row = 0; row < columns; row++)
+                    {
+                        Rectangle r = getRectangle(column, row);
+
+                        if (r != null && isValidMove(r))
+                        {
+                            if (r.Opacity < 1)
+                            {
+                                rect_MouseUp(r, null);
+                            }
+                            else
+                            {
+                                rect_MouseEnter(r, null);
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+            else if (e.Key == Key.D6)
+            {
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                for (int row = columns; row >= 0; row--)
+                {
+                    for (int column = columns; column >= 0; column--)
+                    {
+                        Rectangle r = getRectangle(column, row);
+
+                        if (r != null && isValidMove(r))
+                        {
+                            if (r.Opacity < 1)
+                            {
+                                rect_MouseUp(r, null);
+                            }
+                            else
+                            {
+                                rect_MouseEnter(r, null);
+                            }
+                            return;
+                        }
+                    }
+                }
+            }
+            else if (e.Key == Key.D7)
+            {
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                Rectangle bestComboRect = null;
+                int bestCombo = 0;
+
+                for (int row = 0; row < columns; row++)
+                {
+                    for (int column = 0; column < columns; column++)
+                    {
+                        Rectangle r = getRectangle(column, row);
+                        int c = getComboSize(r);
+
+                        if (r != null && c > bestCombo)
+                        {
+                            bestComboRect = r;
+                            bestCombo = c;
+                        }
+                    }
+                }
+
+                if (bestComboRect != null)
+                {
+                    if (bestComboRect.Opacity < 1)
+                    {
+                        rect_MouseUp(bestComboRect, null);
+                    }
+                    else
+                    {
+                        rect_MouseEnter(bestComboRect, null);
+                    }
+                }
+            }
+            else if (e.Key == Key.D8)
+            {
+                lblScore.Content = getComboSize(getRectangle(5, 5));
+            }
+        }
+
+        int getComboSize(Rectangle tRectangle) {
+
+            if (tRectangle == null)
+            {
+                return 0;
+            }
+
+            int clickedColumn = Grid.GetColumn(tRectangle);
+            int clickedRow = Grid.GetRow(tRectangle);
+
+            Queue<Rectangle> que = new Queue<Rectangle>();
+
+            que.Enqueue(tRectangle);
+
+            int combo = 0;
+
+            while (que.Count > 0)
+            {
+                Rectangle currentRect = que.Dequeue();
+
+                currentRect.Opacity = 0;
+
+                int currentRow = Grid.GetRow(currentRect);
+                int currentColumn = Grid.GetColumn(currentRect);
+
+                if (currentRect.Stroke == tRectangle.Stroke)
+                {
+                    combo++;
+                    Rectangle r;
+
+                    r = getRectangle(currentColumn, currentRow + 1); // Up
+                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn, currentRow - 1); // Down
+                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn - 1, currentRow); // Left
+                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
+
+                    r = getRectangle(currentColumn + 1, currentRow); // Right
+                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
+
+                }
+            }
+            
+            rect_MouseLeave(null, null);
+
+            return combo;
+        }
+
+        private void btnHint_Click(object sender, RoutedEventArgs e)
+        {
+            int columns = gameGrid.ColumnDefinitions.Count;
+
+            for (int row = columns; row >= 0; row--)
+            {
+                for (int column = columns; column >= 0; column--)
+                {
+                    Rectangle r = getRectangle(column, row);
+
+                    if (r != null && isValidMove(r))
+                    {
+                        rect_MouseEnter(r, null);
+                        return;
+                    }
+                }
+            }
+        }
+
+        //this.RegisterName(gameRectangle.Name, gameRectangle);
+
+        //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+        //myDoubleAnimation.From = Canvas.GetTop(gameRectangle);
+        //myDoubleAnimation.To = 0;
+        //myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.3));
+        //Storyboard.SetTargetName(myDoubleAnimation, gameRectangle.Name);
+        //Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Canvas.TopProperty));
+
+        //Storyboard myStoryboard = new Storyboard();
+
+        //myStoryboard.Children.Add(myDoubleAnimation);
+        //myStoryboard.Begin(this);
     }
 }
