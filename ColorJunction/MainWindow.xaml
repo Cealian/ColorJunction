@@ -1,10 +1,27 @@
 ﻿<Window x:Class="ColorJunction.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Viewbox Stretch="Uniform">
-        <Canvas Name="gameCanvas" Height="300" Width="200" Background="White" MouseRightButtonUp="gameCanvas_MouseRightButtonUp">
-            <Label Name="lblOutput" Content="" Width="200" FontSize="6"/>
+        <Canvas Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Grid Name="gameGrid" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF070146" Offset="0"/>
+                        <GradientStop Color="#FF3904C5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                        <SkewTransform AngleY="0" AngleX="0"/>
+                        <RotateTransform Angle="-180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+            </Grid>
+            <Label Name="lblScore" Content="Points: 0" Canvas.Left="10" Canvas.Top="10" />
+            <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
         </Canvas>
     </Viewbox>
 </Window>
