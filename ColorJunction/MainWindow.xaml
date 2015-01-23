@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" KeyUp="Window_KeyUp">
     <Viewbox Stretch="Uniform">
-        <Canvas Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-            <Grid Name="gameGrid" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        <Canvas Name="gamecanvas" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Grid Name="gameGrid" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Canvas.Left="-3">
                 <Grid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF070146" Offset="0"/>
@@ -21,6 +21,7 @@
                 </Grid.RenderTransform>
             </Grid>
             <Label Name="lblScore" Content="Points: 0" Canvas.Left="10" Canvas.Top="10" />
+            <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFFB900" FontSize="36" FontWeight="Bold"/>
             <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
         </Canvas>
     </Viewbox>

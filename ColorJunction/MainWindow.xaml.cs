@@ -229,9 +229,11 @@ namespace ColorJunction
 
             lblScore.Content = "Score: " + _score + "(+" + points + ")";
 
+           popupPoints(points);
             dropBlocks();
             slideBlocks();
             checkPossibleMoves();
+            
         }
 
         void checkPossibleMoves()
@@ -555,6 +557,32 @@ namespace ColorJunction
                 }
             }
         }
+
+        private void popupPoints(int points)
+        {
+            scrollScore.Text = Convert.ToString(points);
+            Point p = Mouse.GetPosition(gamecanvas);
+            Canvas.SetLeft(scrollScore, p.X - scrollScore.Width / 2);
+            Canvas.SetTop(scrollScore, p.Y - scrollScore.Height / 2);
+
+            DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(1.0)));
+            animation.Completed += new EventHandler(popupPoints_Completed);
+
+            scrollScore.RenderTransformOrigin = new Point(p.X - scrollScore.Width / 2, p.Y - scrollScore.Height / 2);
+            
+
+
+            scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
+   
+        }
+
+        private void popupPoints_Completed(object sender, EventArgs e)
+        {
+            scrollScore.Text = "";
+            Canvas.SetLeft(scrollScore, 0);
+            Canvas.SetTop(scrollScore, 0);
+        }
+     
 
         //this.RegisterName(gameRectangle.Name, gameRectangle);
 
