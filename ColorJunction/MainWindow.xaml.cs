@@ -580,9 +580,11 @@ namespace ColorJunction
             Canvas.SetLeft(scrollScore, 0);
             Canvas.SetTop(scrollScore, 0);
             
+            
         }
         private void movePopupPoints(Point p)
         {
+
             Point relativePoint = scrollScore.TransformToVisual(gamecanvas).Transform(new Point(0,0));            
             var moveAnimY = new DoubleAnimation(Canvas.GetTop(scrollScore), relativePoint.Y, new Duration(TimeSpan.FromSeconds(5.0)));
             moveAnimY.Completed += popupPoints_Completed;
