@@ -21,7 +21,7 @@
                 </Grid.RenderTransform>
             </Grid>
             <Label Name="lblScore" Content="Points: 0" Canvas.Left="10" Canvas.Top="10" />
-            <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFFB900" FontSize="36" FontWeight="Bold"/>
+            <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFFB900" FontSize="36" FontWeight="Bold" IsHitTestVisible="False"/>
             <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
         </Canvas>
     </Viewbox>

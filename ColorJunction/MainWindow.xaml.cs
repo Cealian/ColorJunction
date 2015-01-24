@@ -566,30 +566,21 @@ namespace ColorJunction
             Canvas.SetTop(scrollScore, p.Y - scrollScore.Height / 2);
 
             DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(1.0)));
-            //animation.Completed += (popupPoints_Completed);
+            
            
             movePopupPoints(p);
             
             scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
-
-        }
-
-        private void popupPoints_Completed(object sender, EventArgs e)
-        {
-            scrollScore.Text = "";
-            Canvas.SetLeft(scrollScore, 0);
-            Canvas.SetTop(scrollScore, 0);
-            
             
         }
+
+        
         private void movePopupPoints(Point p)
         {
-
-            Point relativePoint = scrollScore.TransformToVisual(gamecanvas).Transform(new Point(0,0));            
-            var moveAnimY = new DoubleAnimation(Canvas.GetTop(scrollScore), relativePoint.Y, new Duration(TimeSpan.FromSeconds(5.0)));
-            moveAnimY.Completed += popupPoints_Completed;
+                                  
+            var moveAnimY = new DoubleAnimation(p.Y-50, p.Y -100, new Duration(TimeSpan.FromSeconds(5.0)));            
             scrollScore.BeginAnimation(Canvas.TopProperty, moveAnimY);
-            
+     
         }
     
      
