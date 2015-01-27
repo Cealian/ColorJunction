@@ -7,7 +7,7 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Canvas Name="gamecanvas" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
-            <Grid Name="gameGrid" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Canvas.Left="-3">
+            <Grid Name="gameGrid" Width="200" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Canvas.Left="-3" Background="#7FFFFFFF">
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="1" ScaleX="-1"/>
