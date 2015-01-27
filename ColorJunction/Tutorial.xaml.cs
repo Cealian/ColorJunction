@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ColorJunction
 {
@@ -23,6 +24,7 @@ namespace ColorJunction
         public Tutorial()
         {
             InitializeComponent();
+            ShowText("SWE");
         }
 
         private void menubtn_Click(object sender, RoutedEventArgs e)
@@ -34,6 +36,23 @@ namespace ColorJunction
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void ShowText(string lang)
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("../../Tut_"+ lang +".txt"))
+                {
+                    String line = sr.ReadToEnd();
+                    tuttxt.Text = line;
+                }
+            }
+            catch (Exception e)
+            {
+                tuttxt.Text = "Lang filen kan inte läsas, " + e.Message;
+            }
+           
         }
     }
 }

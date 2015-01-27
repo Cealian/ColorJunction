@@ -47,5 +47,12 @@ namespace ColorJunction
             this.Close();
             t.Show();
         }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Settings s = new Settings();
+            this.Close();
+            s.Show();
+        }
     }
 }
