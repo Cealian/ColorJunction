@@ -9,22 +9,22 @@
         <Grid.Background>
             <ImageBrush ImageSource="media/splashscreen.png" Stretch="Uniform"/>
         </Grid.Background>
-        <Button Name="PlayBtn" Content="Play"  HorizontalAlignment="Left" Margin="182,116,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="PlayBtn_Click">
+        <Button Name="PlayBtn" Content="Play"  HorizontalAlignment="Left" Margin="182,142,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="PlayBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="media/RecGrön.png"/>
             </Button.Background>
         </Button>
-        <Button Name="ExtrasBtn" Content="How to Play" HorizontalAlignment="Left" Margin="182,185,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="ExtrasBtn_Click">
+        <Button Name="ExtrasBtn" Content="How to Play" HorizontalAlignment="Left" Margin="182,221,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="ExtrasBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="media/RecGul.png"/>
             </Button.Background>
         </Button>
-        <Button Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="182,250,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="SettingsBtn_Click">
+        <!--<Button Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="182,250,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="SettingsBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="media/RecBlå.png"/>
             </Button.Background>
-        </Button>
-        <Button Name="ExitBtn" Content="Exit" HorizontalAlignment="Left" Margin="182,315,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="ExitBtn_Click">
+        </Button>-->
+        <Button Name="ExitBtn" Content="Exit" HorizontalAlignment="Left" Margin="182,302,0,0" VerticalAlignment="Top" Width="145" Height="48" FontSize="20" FontWeight="Bold" BorderBrush="Transparent" Click="ExitBtn_Click">
             <Button.Background>
                 <ImageBrush ImageSource="media/RecRöd.png"/>
             </Button.Background>

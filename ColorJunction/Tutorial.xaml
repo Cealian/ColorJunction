@@ -4,10 +4,7 @@
         Title="Tutorial" MouseLeftButtonDown="Window_MouseLeftButtonDown" Height="300" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" BorderBrush="Black" BorderThickness="1">
 
     <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="White" Offset="0"/>
-            <GradientStop Color="Black" Offset="1"/>
-        </LinearGradientBrush>
+        <ImageBrush ImageSource="media/Background.png"/>
     </Window.Background>
     <Grid>
         <Button Name="menubtn" Click="menubtn_Click" Margin="220,238,28,30" Height="30" Width="50">Menu</Button>
