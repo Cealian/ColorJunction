@@ -1,0 +1,8 @@
+﻿<Window x:Class="ColorJunction.Tutorial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tutorial" Height="500" Width="300" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" BorderBrush="Black" BorderThickness="1">
+    <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="White">
+        <Button Name="menubtn" Click="menubtn_Click" Margin="238,458,10,10" Height="30" Width="50">Menu</Button>
+    </Grid>
+</Window>
