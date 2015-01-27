@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace ColorJunction
 {
     /// <summary>
-    /// Interaction logic for Tutorial.xaml
+    /// Interaction logic for Settings.xaml
     /// </summary>
-    public partial class Tutorial : Window
+    public partial class Settings : Window
     {
-        Splash s = new Splash();
-        public Tutorial()
+        public Settings()
         {
             InitializeComponent();
-        }
-
-        private void menubtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            s.Show();
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
     }
 }

@@ -19,9 +19,6 @@ namespace ColorJunction
     /// </summary>
     public partial class Splash : Window
     {
-        MainWindow m = new MainWindow();
-        
-
         public Splash()
         {
             InitializeComponent();
@@ -39,6 +36,7 @@ namespace ColorJunction
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow m = new MainWindow();
             this.Close();
             m.Show();
         }

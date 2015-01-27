@@ -556,6 +556,16 @@ namespace ColorJunction
             }
         }
 
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void btnexit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         //this.RegisterName(gameRectangle.Name, gameRectangle);
 
         //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
