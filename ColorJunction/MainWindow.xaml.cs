@@ -595,6 +595,13 @@ namespace ColorJunction
             this.Close();
         }
 
+        private void menubtn_Click(object sender, RoutedEventArgs e)
+        {
+            Splash s = new Splash();
+            this.Close();
+            s.Show();
+        }
+
         //this.RegisterName(gameRectangle.Name, gameRectangle);
 
         //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
