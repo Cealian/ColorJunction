@@ -353,7 +353,7 @@ namespace ColorJunction
                 gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
                 gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
 
-                fillGrid(10);
+                fillGrid(30);
             }
             else if (e.Key == Key.D1)
             {
@@ -370,7 +370,7 @@ namespace ColorJunction
                 gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
                 gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
 
-                fillGrid(15);
+                fillGrid(10);
             }
             else if (e.Key == Key.D4)
             {
@@ -554,6 +554,16 @@ namespace ColorJunction
                     }
                 }
             }
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            // Empty grid
+            gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+            gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+            gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+            fillGrid(10);
         }
 
         //this.RegisterName(gameRectangle.Name, gameRectangle);
