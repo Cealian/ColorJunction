@@ -1,0 +1,4 @@
+﻿Välkommen till ColorJunction!
+
+Detta spel går ut på att klicka bort grupper av färgkuber som har en eller flera grannar och få så hög poäng som möjligt.
+Ju större kubkluster desto mer poäng.
