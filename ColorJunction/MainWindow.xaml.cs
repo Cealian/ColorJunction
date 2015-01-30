@@ -32,13 +32,16 @@ namespace ColorJunction
     public partial class MainWindow : Window
     {
         int _score = 0;
+        Sprite[] spriteArray = new Sprite[4];
+        ImageBrush[] imageBrushArray = new ImageBrush[4];
+
 
         public MainWindow()
         {
             InitializeComponent();
             fillGrid(10);
         }
-
+     
         private void fillGrid(int columns)
         {
             _score = 0;
@@ -47,6 +50,31 @@ namespace ColorJunction
 
             Random rnd = new Random();
             GridLength gridLength = new GridLength(200 / columns);
+            
+            imageBrushArray[0] = new ImageBrush();
+            imageBrushArray[1] = new ImageBrush();
+            imageBrushArray[2] = new ImageBrush();
+            imageBrushArray[3] = new ImageBrush();
+
+            imageBrushArray[0].ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
+            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
+            imageBrushArray[2].ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));
+            imageBrushArray[3].ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+
+            string blueSource = "../../media/Blue Square/";
+            string redSource = "../../media/Red Square/";
+            string greenSource = "../../media/Green Square/";
+            string yellowSource = "../../media/Yellow Square/";
+
+            BitmapImage[] blue = createBitmapArray(30, blueSource, "Blue__", 3);
+            BitmapImage[] red = createBitmapArray(30, redSource, "Red__", 3);
+            BitmapImage[] green = createBitmapArray(30, greenSource, "Green__", 3);
+            BitmapImage[] yellow = createBitmapArray(30, yellowSource, "Yellow__", 3);
+
+            spriteArray[0] = new Sprite(blue);
+            spriteArray[1] =  new Sprite(red);
+            spriteArray[2] = new Sprite(green);
+            spriteArray[3] = new Sprite(yellow);
 
             for (int i = 0; i < columns; i++)
             {
@@ -57,7 +85,7 @@ namespace ColorJunction
 
                 RowDefinition row = new RowDefinition();
                 row.Height = gridLength;
-                gameGrid.RowDefinitions.Add(row);
+                gameGrid.RowDefinitions.Add(row);           
 
                 for (int j = 0; j < columns; j++)
                 {
@@ -69,19 +97,19 @@ namespace ColorJunction
                     switch (rnd.Next(0, 4))
                     {
                         case 0:
-                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
+                            fill = imageBrushArray[0];
                             stroke = Brushes.Blue;
                             break;
                         case 1:
-                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
+                            fill = imageBrushArray[1];
                             stroke = Brushes.Yellow;
                             break;
                         case 2:
-                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));
+                            fill = imageBrushArray[2];
                             stroke = Brushes.Green;
                             break;
                         case 3:
-                            fill.ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+                            fill = imageBrushArray[3];
                             stroke = Brushes.Red;
                             break;
                         default: // Default not possible...
@@ -113,6 +141,29 @@ namespace ColorJunction
             checkPossibleMoves();
         }
 
+        //Creates an array of bitmapimages
+        public BitmapImage[] createBitmapArray(int noOfImages, string sourcePath, string name, int numberLength = 0, string imageFormat = ".png")
+        {
+            BitmapImage[] BtArray = new BitmapImage[noOfImages];
+
+            for (int i = 0; i < noOfImages - 1; i++)
+            {
+                string imgNo = Convert.ToString(i);
+                while (imgNo.Length < numberLength)
+                {
+                    imgNo = "0" + imgNo;
+                }
+                BitmapImage bmi = new BitmapImage();
+                string fullSource = sourcePath + name + imgNo + imageFormat;
+                bmi.BeginInit();
+                bmi.UriSource = new Uri(fullSource,UriKind.Relative);
+                bmi.EndInit();             
+                BtArray[i] = bmi;
+            }
+            return BtArray;
+        }
+
+
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -125,6 +176,20 @@ namespace ColorJunction
 
                     if (r != null)
                     {
+                        switch (r.Stroke.ToString()) //Lägger en animerad sprite i rektangeln
+                        {
+                            case "#FF0000FF": r.Fill = imageBrushArray[0];//if Blue
+                                break;
+                             case "#FFFFFF00": r.Fill = imageBrushArray[1];//if Yellow
+                                break;                            
+                            case "#FF008000": r.Fill = imageBrushArray[2];//if Green
+                                break;
+                            case "#FFFF0000": r.Fill = imageBrushArray[3];//if Red
+                                break;
+                            default:
+                                break; 
+                        }
+
                         r.Opacity = 1;
                     }
                 }
@@ -149,6 +214,7 @@ namespace ColorJunction
 
             que.Enqueue(hRectangle);
 
+
             while (que.Count > 0)
             {
                 Rectangle currentRect = que.Dequeue();
@@ -158,6 +224,20 @@ namespace ColorJunction
 
                 if (currentRect.Stroke == hRectangle.Stroke)
                 {
+                    switch (currentRect.Stroke.ToString()) //Lägger en animerad sprite i rektangeln
+                    {
+                        case "#FF0000FF": currentRect.Fill = spriteArray[0].Animation;//if Blue
+                            break;
+                        case "#FFFF0000": currentRect.Fill = spriteArray[1].Animation;//if Red
+                            break;
+                        case "#FF008000": currentRect.Fill = spriteArray[2].Animation;//if Green
+                            break;
+                        case "#FFFFFF00": currentRect.Fill = spriteArray[3].Animation;//if Yellow
+                            break;
+                        default:
+                            break;
+                    }
+                                        
                     currentRect.Opacity = 0.7;
                     Rectangle r;
 
