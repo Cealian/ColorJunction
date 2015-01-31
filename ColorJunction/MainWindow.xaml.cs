@@ -304,17 +304,19 @@ namespace ColorJunction
                 }
             }
 
+
             int points = (removedRects - 1) * 2;
             _score += points;
-
             lblScore.Content = "Score: " + _score + "(+" + points + ")";
-
-           popupPoints(points);
+            
+           
+            popupPoints(points);
             dropBlocks();
             slideBlocks();
             checkPossibleMoves();
             
         }
+
 
         void checkPossibleMoves()
         {
