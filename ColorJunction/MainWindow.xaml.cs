@@ -163,7 +163,6 @@ namespace ColorJunction
             return BtArray;
         }
 
-
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -317,7 +316,6 @@ namespace ColorJunction
             
         }
 
-
         void checkPossibleMoves()
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -342,6 +340,9 @@ namespace ColorJunction
             }
             else
             {
+
+
+
                 gameGrid.Opacity = 0.5;
             }
         }
@@ -350,24 +351,17 @@ namespace ColorJunction
         {
             int columns = gameGrid.ColumnDefinitions.Count;
 
-            for (int x = 0; x < columns; x++)
+            int slideDistance = 1;
+
+            for (int column = 0; column < columns; column++)
             {
-                for (int column = columns; column > 0; column--)
+                if (getRectangle(column, 0) == null && !slideCol(column+1, slideDistance))
                 {
-                    if (getRectangle(column, 0) == null)
-                    {
-                        for (int i = column; i < columns; i++)
-                        {
-                            for (int j = 0; j < columns; j++)
-                            {
-                                Rectangle r = getRectangle(i, j);
-                                if (r != null)
-                                {
-                                    Grid.SetColumn(r, i - 1);
-                                }
-                            }
-                        }
-                    }
+                    slideDistance++;
+                }
+                else
+                {
+                    slideDistance = 1;
                 }
             }
         }
@@ -390,6 +384,11 @@ namespace ColorJunction
                     }
                 }
             }
+        }
+
+        private void gameOver() 
+        {
+            // Gameover, save hs?
         }
 
         bool isValidMove(Rectangle testRectangle)
@@ -440,7 +439,7 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D1)
             {
-                dropDownRect(9, 9, 3);
+                slideCol(9, 1);
             }
             else if (e.Key == Key.D2)
             {
@@ -540,11 +539,25 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D9)
             {
-                // 9
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(columns-1);
             }
             else if (e.Key == Key.D0)
             {
-                // 0
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(columns+1);
             }
         }
 
@@ -658,7 +671,7 @@ namespace ColorJunction
             s.Show();
         }
 
-        private bool dropDownRect(int column, int row, int dropHeight) 
+        private bool dropDownRect(int column, int row, int dropHeight)
         {
             Rectangle rect = getRectangle(column, row);
 
@@ -669,12 +682,42 @@ namespace ColorJunction
 
             double height = rect.Height;
 
-            var T = new TranslateTransform(0, height*dropHeight);
+            var T = new TranslateTransform(0, height * dropHeight);
             rect.RenderTransform = T;
-            Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200*dropHeight));
+            Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * dropHeight));
             DoubleAnimation anim = new DoubleAnimation(0, duration);
             T.BeginAnimation(TranslateTransform.YProperty, anim);
 
+            return true;
+
+        }
+
+        private bool slideCol(int column, int SlideDistance)
+        {
+            Rectangle rect = getRectangle(column, 0);
+            int rows = gameGrid.RowDefinitions.Count;
+
+            if (rect == null)
+                return false;
+
+            for (int row = 0; row < rows; row++)
+            {
+                rect = getRectangle(column, row);
+
+                if (rect == null)
+                    break;
+
+                Grid.SetColumn(rect, column - SlideDistance);
+
+                double width = rect.Width;
+
+                var T = new TranslateTransform(width * SlideDistance, 0);
+                rect.RenderTransform = T;
+                Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * SlideDistance));
+                DoubleAnimation anim = new DoubleAnimation(0, duration);
+                T.BeginAnimation(TranslateTransform.XProperty, anim);
+            }
+            
             return true;
 
         }
