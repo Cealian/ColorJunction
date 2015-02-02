@@ -389,20 +389,14 @@ namespace ColorJunction
         {
             int columns = gameGrid.ColumnDefinitions.Count;
 
-            int slideDistance = 1;
-
             for (int column = 0; column < columns; column++)
             {
-                if (getRectangle(column, 0) == null && !slideCol(column+1, slideDistance))
+                if (getRectangle(column, 0) == null)
                 {
-                    slideDistance++;
+                    slideCol(column+1);
                 }
-                else
-                    {
-                    slideDistance = 1;
-                                }
-                            }
-                        }
+            }   
+        }
 
         void dropBlocks()
         {
@@ -477,7 +471,7 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D1)
             {
-                slideCol(9, 1);
+                slideCol(9);
             }
             else if (e.Key == Key.D2)
             {
@@ -765,13 +759,21 @@ namespace ColorJunction
             lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
 
-        private bool slideCol(int column, int SlideDistance)
+        private void slideCol(int column)
         {
             Rectangle rect = getRectangle(column, 0);
             int rows = gameGrid.RowDefinitions.Count;
 
             if (rect == null)
-                return false;
+                return;
+
+
+            int slideDistance = 0;
+
+            for (int i = 1; column >= 0 && getRectangle(column-i, 0) == null; i++)
+			{
+                slideDistance++;
+			}
 
             for (int row = 0; row < rows; row++)
             {
@@ -780,20 +782,16 @@ namespace ColorJunction
                 if (rect == null)
                     break;
 
-                Grid.SetColumn(rect, column - SlideDistance);
+                Grid.SetColumn(rect, column - slideDistance);
 
                 double width = rect.Width;
 
-                var T = new TranslateTransform(width * SlideDistance, 0);
+                var T = new TranslateTransform(width * slideDistance, 0);
                 rect.RenderTransform = T;
-                Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * SlideDistance));
+                Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * slideDistance));
                 DoubleAnimation anim = new DoubleAnimation(0, duration);
                 T.BeginAnimation(TranslateTransform.XProperty, anim);
             }
-            
-            return true;
-
         }
-
     }
 }
