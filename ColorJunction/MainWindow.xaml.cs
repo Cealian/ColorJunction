@@ -142,7 +142,7 @@ namespace ColorJunction
 
                     rect.Fill = fill;
                     rect.Stroke = stroke;
-                    rect.StrokeThickness = 0.5;
+                    rect.StrokeThickness = 0.0;
                     rect.Cursor = Cursors.Hand;
 
                     rect.Width = gameGrid.Width / columns;
@@ -219,7 +219,7 @@ namespace ColorJunction
         void rect_MouseEnter(object sender, MouseEventArgs e)
         {
             rect_MouseLeave(null, null);
-
+            
             Rectangle hRectangle = sender as Rectangle;
 
             if (!isValidMove(hRectangle))
@@ -720,7 +720,6 @@ namespace ColorJunction
            // Canvas.GetLeft(lblScore);
             Canvas.SetTop(lblScore, 10);
             Canvas.SetLeft(lblScore, 10);
-
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 
@@ -749,8 +748,19 @@ namespace ColorJunction
         {
             var top = Canvas.GetTop(lblScore);
             var left = Canvas.GetLeft(lblScore);
-            var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
-            var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
+
+            double newTop = top + 120;
+            double newLeft = left + 50;
+
+            var moveAnimTop = new DoubleAnimation(top, newTop , new Duration(TimeSpan.FromSeconds(1.0)));
+            var moveAnimLeft = new DoubleAnimation(left, newLeft, new Duration(TimeSpan.FromSeconds(1.0)));
+
+            moveAnimLeft.FillBehavior = FillBehavior.Stop;
+            moveAnimTop.FillBehavior = FillBehavior.Stop;
+
+            Canvas.SetTop(lblScore, newTop);
+            Canvas.SetLeft(lblScore, newLeft);
+
             lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
             lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
