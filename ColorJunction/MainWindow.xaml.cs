@@ -376,17 +376,16 @@ namespace ColorJunction
         {
             int columns = gameGrid.ColumnDefinitions.Count;
 
-            for (int i = 0; i < columns; i++)
+            for (int column = 0; column < columns; column++)
             {
-                for (int row = columns - 1; row > 0; row--)
+                int dropHeight = 01;
+                for (int row = 0; row < columns; row++)
                 {
-                    for (int column = 0; column < columns; column++)
+                    if (getRectangle(column, row)==null)
                     {
-                        Rectangle r = getRectangle(column, row);
-
-                        if (r != null && getRectangle(column, row - 1) == null)
+                        if (!dropDownRect(column, row + 1, dropHeight)) 
                         {
-                            Grid.SetRow(r, row - 1);
+                            dropHeight++;
                         }
                     }
                 }
@@ -441,11 +440,11 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D1)
             {
-                gameGrid.Children.Remove(getRectangle(5, 5));
+                dropDownRect(9, 9, 3);
             }
             else if (e.Key == Key.D2)
             {
-                getRectangle(0, 0).Fill = Brushes.Black;
+                // 2
             }
             else if (e.Key == Key.D3)
             {
@@ -533,41 +532,19 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D7)
             {
-                int columns = gameGrid.ColumnDefinitions.Count;
-
-                Rectangle bestComboRect = null;
-                int bestCombo = 0;
-
-                for (int row = 0; row < columns; row++)
-                {
-                    for (int column = 0; column < columns; column++)
-                    {
-                        Rectangle r = getRectangle(column, row);
-                        int c = getComboSize(r);
-
-                        if (r != null && c > bestCombo)
-                        {
-                            bestComboRect = r;
-                            bestCombo = c;
-                        }
-                    }
-                }
-
-                if (bestComboRect != null)
-                {
-                    if (bestComboRect.Opacity < 1)
-                    {
-                        rect_MouseUp(bestComboRect, null);
-                    }
-                    else
-                    {
-                        rect_MouseEnter(bestComboRect, null);
-                    }
-                }
+                // 7
             }
             else if (e.Key == Key.D8)
             {
-                lblScore.Content = getComboSize(getRectangle(5, 5));
+                // 8
+            }
+            else if (e.Key == Key.D9)
+            {
+                // 9
+            }
+            else if (e.Key == Key.D0)
+            {
+                // 0
             }
         }
 
@@ -655,7 +632,6 @@ namespace ColorJunction
             scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
             
         }
-
         
         private void movePopupPoints(Point p)
         {
@@ -664,8 +640,6 @@ namespace ColorJunction
             scrollScore.BeginAnimation(Canvas.TopProperty, moveAnimY);
      
         }
-    
-     
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -684,18 +658,26 @@ namespace ColorJunction
             s.Show();
         }
 
-        //this.RegisterName(gameRectangle.Name, gameRectangle);
+        private bool dropDownRect(int column, int row, int dropHeight) 
+        {
+            Rectangle rect = getRectangle(column, row);
 
-        //DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-        //myDoubleAnimation.From = Canvas.GetTop(gameRectangle);
-        //myDoubleAnimation.To = 0;
-        //myDoubleAnimation.Duration = new Duration(TimeSpan.FromSeconds(0.3));
-        //Storyboard.SetTargetName(myDoubleAnimation, gameRectangle.Name);
-        //Storyboard.SetTargetProperty(myDoubleAnimation, new PropertyPath(Canvas.TopProperty));
+            if (rect == null)
+                return false;
 
-        //Storyboard myStoryboard = new Storyboard();
+            Grid.SetRow(rect, row - dropHeight);
 
-        //myStoryboard.Children.Add(myDoubleAnimation);
-        //myStoryboard.Begin(this);
+            double height = rect.Height;
+
+            var T = new TranslateTransform(0, height*dropHeight);
+            rect.RenderTransform = T;
+            Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200*dropHeight));
+            DoubleAnimation anim = new DoubleAnimation(0, duration);
+            T.BeginAnimation(TranslateTransform.YProperty, anim);
+
+            return true;
+
+        }
+
     }
 }
