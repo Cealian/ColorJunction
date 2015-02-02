@@ -32,18 +32,21 @@ namespace ColorJunction
     public partial class MainWindow : Window
     {
         int _score = 0;
+        public int tutorialstep = 0;
         Sprite[] spriteArray = new Sprite[4];
         ImageBrush[] imageBrushArray = new ImageBrush[4];
-
 
         public MainWindow()
         {
             InitializeComponent();
-            fillGrid(10);
         }
      
-        private void fillGrid(int columns)
+        public void fillGrid(int columns)
         {
+            if (tutorialstep == 1) 
+            {
+                btnRestart.IsEnabled = false;
+            }
             _score = 0;
 
             lblScore.Content = "Score: 0";
@@ -76,6 +79,8 @@ namespace ColorJunction
             spriteArray[2] = new Sprite(green);
             spriteArray[3] = new Sprite(yellow);
 
+            int random;
+
             for (int i = 0; i < columns; i++)
             {
 
@@ -94,7 +99,24 @@ namespace ColorJunction
                     ImageBrush fill = new ImageBrush();
                     Brush stroke = Brushes.Black;
 
-                    switch (rnd.Next(0, 4))
+                    if (tutorialstep == 1)
+                    {
+                        random = 0;
+                    }
+                    else if (tutorialstep == 2)
+                    {
+                        random = 1;
+                        if(i>=2)
+                        {
+                            random = 0;                        
+                        }
+                    }
+                    else 
+                    {
+                        random = rnd.Next(0, 4);
+                    }
+                    
+                    switch (random)
                     {
                         case 0:
                             fill = imageBrushArray[0];
@@ -117,7 +139,6 @@ namespace ColorJunction
                             stroke = Brushes.Black;
                             break;
                     }
-
 
                     rect.Fill = fill;
                     rect.Stroke = stroke;
@@ -254,7 +275,6 @@ namespace ColorJunction
 
                 }
             }
-
         }
 
         void rect_MouseUp(object sender, MouseButtonEventArgs e)
@@ -306,7 +326,7 @@ namespace ColorJunction
 
             int points = (removedRects - 1) * 2;
             _score += points;
-            lblScore.Content = "Score: " + _score + "(+" + points + ")";
+            lblScore.Content = "Score: " + _score;
             
            
             popupPoints(points);
@@ -314,6 +334,25 @@ namespace ColorJunction
             slideBlocks();
             checkPossibleMoves();
             
+
+            if (tutorialstep == 1)
+            {
+                tutorialstep = 2;
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(3);
+            }
+            else if (tutorialstep == 2)
+            {
+                tutorialstep = 3;              
+            }
+            else if (tutorialstep == 3) 
+            {
+                tutorialstep = 0;
+                btnRestart.IsEnabled = true;
+            }
         }
 
         void checkPossibleMoves()
@@ -344,6 +383,10 @@ namespace ColorJunction
 
 
                 gameGrid.Opacity = 0.5;
+                movelbl();
+                GameOverTxt.Text = "Game Over";
+                
+
             }
         }
 
@@ -360,11 +403,11 @@ namespace ColorJunction
                     slideDistance++;
                 }
                 else
-                {
+                    {
                     slideDistance = 1;
-                }
-            }
-        }
+                                }
+                            }
+                        }
 
         void dropBlocks()
         {
@@ -639,7 +682,6 @@ namespace ColorJunction
 
             DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(1.0)));
             
-           
             movePopupPoints(p);
             
             scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
@@ -671,7 +713,22 @@ namespace ColorJunction
             s.Show();
         }
 
-        private bool dropDownRect(int column, int row, int dropHeight)
+        private void restatbtn_Click(object sender, RoutedEventArgs e) 
+        {
+            gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+            gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+            gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+            fillGrid(10);
+            GameOverTxt.Text = "";
+            Canvas.GetTop(lblScore);
+            Canvas.GetLeft(lblScore);
+            Canvas.SetTop(lblScore, 10);
+            Canvas.SetLeft(lblScore, 10);
+
+        }
+
+        private bool dropDownRect(int column, int row, int dropHeight) 
         {
             Rectangle rect = getRectangle(column, row);
 
@@ -686,10 +743,21 @@ namespace ColorJunction
             rect.RenderTransform = T;
             Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * dropHeight));
             DoubleAnimation anim = new DoubleAnimation(0, duration);
+            anim.AccelerationRatio = 1.0;
             T.BeginAnimation(TranslateTransform.YProperty, anim);
 
             return true;
 
+        }
+
+        private void movelbl()
+        {
+            var top = Canvas.GetTop(lblScore);
+            var left = Canvas.GetLeft(lblScore);
+            var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
+            var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
+            lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
+            lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
 
         private bool slideCol(int column, int SlideDistance)

@@ -21,6 +21,8 @@ namespace ColorJunction
     public partial class Tutorial : Window
     {
         Splash s = new Splash();
+        MainWindow m = new MainWindow();
+
         public Tutorial()
         {
             InitializeComponent();
@@ -38,6 +40,13 @@ namespace ColorJunction
             DragMove();
         }
 
+        private void techbtn_Click(object sender, RoutedEventArgs e) 
+        {
+            this.Close();
+            m.Show();
+            m.tutorialstep = 1;
+            m.fillGrid(2);
+        }
         private void ShowText(string lang)
         {
             try

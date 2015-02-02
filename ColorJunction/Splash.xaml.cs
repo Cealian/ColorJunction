@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace ColorJunction
 {
     /// <summary>
@@ -31,6 +32,7 @@ namespace ColorJunction
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+            System.Media.SoundPlayer exitPlay = new System.Media.SoundPlayer();
             this.Close();
         }
 
@@ -39,6 +41,7 @@ namespace ColorJunction
             MainWindow m = new MainWindow();
             this.Close();
             m.Show();
+            m.fillGrid(10);
         }
 
         private void ExtrasBtn_Click(object sender, RoutedEventArgs e)
