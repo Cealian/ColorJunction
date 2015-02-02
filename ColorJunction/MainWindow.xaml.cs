@@ -384,6 +384,7 @@ namespace ColorJunction
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
+                
 
             }
         }
@@ -706,6 +707,12 @@ namespace ColorJunction
             gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
 
             fillGrid(10);
+            GameOverTxt.Text = "";
+            Canvas.GetTop(lblScore);
+            Canvas.GetLeft(lblScore);
+            Canvas.SetTop(lblScore, 10);
+            Canvas.SetLeft(lblScore, 10);
+
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 
@@ -737,9 +744,9 @@ namespace ColorJunction
             var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
             var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
             lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
-            lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);
-            
+            lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
+        
 
     }
 }
