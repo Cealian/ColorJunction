@@ -142,7 +142,7 @@ namespace ColorJunction
 
                     rect.Fill = fill;
                     rect.Stroke = stroke;
-                    rect.StrokeThickness = 0.5;
+                    rect.StrokeThickness = 0.0;
                     rect.Cursor = Cursors.Hand;
 
                     rect.Width = gameGrid.Width / columns;
@@ -220,7 +220,7 @@ namespace ColorJunction
         void rect_MouseEnter(object sender, MouseEventArgs e)
         {
             rect_MouseLeave(null, null);
-
+            
             Rectangle hRectangle = sender as Rectangle;
 
             if (!isValidMove(hRectangle))
@@ -712,7 +712,6 @@ namespace ColorJunction
             Canvas.GetLeft(lblScore);
             Canvas.SetTop(lblScore, 10);
             Canvas.SetLeft(lblScore, 10);
-
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 

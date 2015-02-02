@@ -26,7 +26,7 @@ namespace ColorJunction
         public Tutorial()
         {
             InitializeComponent();
-            ShowText("SWE");
+            ShowText("ENG");
         }
 
         private void menubtn_Click(object sender, RoutedEventArgs e)
@@ -47,6 +47,8 @@ namespace ColorJunction
             m.tutorialstep = 1;
             m.fillGrid(2);
         }
+
+        //Reads the textfile and prints out the tutorial text
         private void ShowText(string lang)
         {
             try
