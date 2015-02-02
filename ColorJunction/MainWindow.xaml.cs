@@ -462,12 +462,7 @@ namespace ColorJunction
 
             if (e.Key == Key.F5)
             {
-                // Empty grid
-                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
-                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
-                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
-
-                fillGrid(10);
+                restatbtn_Click(null, null);
             }
             else if (e.Key == Key.D1)
             {
@@ -764,16 +759,15 @@ namespace ColorJunction
             Rectangle rect = getRectangle(column, 0);
             int rows = gameGrid.RowDefinitions.Count;
 
-            if (rect == null)
+            if (rect == null || column < 1)
                 return;
 
+            int slideDistance = 1;
 
-            int slideDistance = 0;
-
-            for (int i = 1; column >= 0 && getRectangle(column-i, 0) == null; i++)
-			{
+            while(column-slideDistance-1 >= 0 && getRectangle(column-slideDistance-1, 0) == null)
+            {
                 slideDistance++;
-			}
+            }
 
             for (int row = 0; row < rows; row++)
             {
