@@ -1,0 +1,4 @@
+﻿Welcome to ColorJunction!
+
+This game is about removing clusters of colored cubes. Click on clusters of two or more of the same color to remove them from the board.
+Bigger clusters give you more points. Good luck!
