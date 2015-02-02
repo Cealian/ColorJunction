@@ -40,7 +40,7 @@ namespace ColorJunction
         {
             InitializeComponent();
         }
-     
+        //Fills the grid with randomly generated square at the beginning of game
         public void fillGrid(int columns)
         {
             if (tutorialstep == 1) 
@@ -183,7 +183,7 @@ namespace ColorJunction
             }
             return BtArray;
         }
-
+        //Restores the squares to their original images 
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -215,7 +215,7 @@ namespace ColorJunction
                 }
             }
         }
-
+        //If the squares hovered over are a valid combo, show animated sprites
         void rect_MouseEnter(object sender, MouseEventArgs e)
         {
             rect_MouseLeave(null, null);
@@ -379,14 +379,9 @@ namespace ColorJunction
             }
             else
             {
-
-
-
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
-                
-
             }
         }
 
@@ -721,8 +716,8 @@ namespace ColorJunction
 
             fillGrid(10);
             GameOverTxt.Text = "";
-            Canvas.GetTop(lblScore);
-            Canvas.GetLeft(lblScore);
+           // Canvas.GetTop(lblScore);
+           // Canvas.GetLeft(lblScore);
             Canvas.SetTop(lblScore, 10);
             Canvas.SetLeft(lblScore, 10);
 
