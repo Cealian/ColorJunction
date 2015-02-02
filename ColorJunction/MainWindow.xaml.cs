@@ -754,11 +754,18 @@ namespace ColorJunction
         {
             var top = Canvas.GetTop(lblScore);
             var left = Canvas.GetLeft(lblScore);
-            var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
-            var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
+
+            double newTop = top + 120;
+            double newLeft = left + 50;
+
+            var moveAnimTop = new DoubleAnimation(top, newTop , new Duration(TimeSpan.FromSeconds(1.0)));
+            var moveAnimLeft = new DoubleAnimation(left, newLeft, new Duration(TimeSpan.FromSeconds(1.0)));
 
             moveAnimLeft.FillBehavior = FillBehavior.Stop;
             moveAnimTop.FillBehavior = FillBehavior.Stop;
+
+            Canvas.SetTop(lblScore, newTop);
+            Canvas.SetLeft(lblScore, newLeft);
 
             lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
             lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
