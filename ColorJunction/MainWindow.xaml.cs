@@ -424,7 +424,7 @@ namespace ColorJunction
             }
         }
 
-        private void gameOver() 
+        private void highScore() 
         {
             // Gameover, save hs?
         }
