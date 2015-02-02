@@ -7,7 +7,8 @@
         <ImageBrush ImageSource="media/Background.png"/>
     </Window.Background>
     <Grid>
-        <Button Name="menubtn" Click="menubtn_Click" Margin="220,238,28,30" Height="30" Width="50">Menu</Button>
+        <Button Name="menubtn" Click="menubtn_Click" Margin="220,207,28,61" Height="30" Width="50">Menu</Button>
+        <Button Name="techbtn" Click="techbtn_Click" Height="30" Width="75" Content="Teach me!" Margin="195,242,28,26" RenderTransformOrigin="0.512,0.439"/>
         <TextBlock Name="tuttxt" HorizontalAlignment="Left" Height="235" Margin="32,33,0,0" TextWrapping="Wrap" Text="Text från textfil" VerticalAlignment="Top" Width="212" FontSize="14" FontFamily="Berlin Sans FB"/>
 
     </Grid>
