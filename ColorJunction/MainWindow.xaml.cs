@@ -184,7 +184,6 @@ namespace ColorJunction
             return BtArray;
         }
 
-
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -328,13 +327,13 @@ namespace ColorJunction
             int points = (removedRects - 1) * 2;
             _score += points;
             lblScore.Content = "Score: " + _score;
+            
            
-
             popupPoints(points);
             dropBlocks();
             slideBlocks();
             checkPossibleMoves();
-
+            
 
             if (tutorialstep == 1)
             {
@@ -355,7 +354,6 @@ namespace ColorJunction
                 btnRestart.IsEnabled = true;
             }
         }
-
 
         void checkPossibleMoves()
         {
@@ -381,6 +379,9 @@ namespace ColorJunction
             }
             else
             {
+
+
+
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
@@ -393,27 +394,20 @@ namespace ColorJunction
         {
             int columns = gameGrid.ColumnDefinitions.Count;
 
-            for (int x = 0; x < columns; x++)
+            int slideDistance = 1;
+
+            for (int column = 0; column < columns; column++)
             {
-                for (int column = columns; column > 0; column--)
+                if (getRectangle(column, 0) == null && !slideCol(column+1, slideDistance))
                 {
-                    if (getRectangle(column, 0) == null)
+                    slideDistance++;
+                }
+                else
                     {
-                        for (int i = column; i < columns; i++)
-                        {
-                            for (int j = 0; j < columns; j++)
-                            {
-                                Rectangle r = getRectangle(i, j);
-                                if (r != null)
-                                {
-                                    Grid.SetColumn(r, i - 1);
+                    slideDistance = 1;
                                 }
                             }
                         }
-                    }
-                }
-            }
-        }
 
         void dropBlocks()
         {
@@ -433,6 +427,11 @@ namespace ColorJunction
                     }
                 }
             }
+        }
+
+        private void gameOver() 
+        {
+            // Gameover, save hs?
         }
 
         bool isValidMove(Rectangle testRectangle)
@@ -483,7 +482,7 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D1)
             {
-                dropDownRect(9, 9, 3);
+                slideCol(9, 1);
             }
             else if (e.Key == Key.D2)
             {
@@ -583,11 +582,25 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D9)
             {
-                // 9
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(columns-1);
             }
             else if (e.Key == Key.D0)
             {
-                // 0
+                int columns = gameGrid.ColumnDefinitions.Count;
+
+                // Empty grid
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(columns+1);
             }
         }
 
@@ -668,7 +681,7 @@ namespace ColorJunction
             Canvas.SetTop(scrollScore, p.Y - scrollScore.Height / 2);
 
             DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(1.0)));
-                       
+            
             movePopupPoints(p);
             
             scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
@@ -725,9 +738,9 @@ namespace ColorJunction
 
             double height = rect.Height;
 
-            var T = new TranslateTransform(0, height*dropHeight);
+            var T = new TranslateTransform(0, height * dropHeight);
             rect.RenderTransform = T;
-            Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200*dropHeight));
+            Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * dropHeight));
             DoubleAnimation anim = new DoubleAnimation(0, duration);
             anim.AccelerationRatio = 1.0;
             T.BeginAnimation(TranslateTransform.YProperty, anim);
@@ -740,12 +753,52 @@ namespace ColorJunction
         {
             var top = Canvas.GetTop(lblScore);
             var left = Canvas.GetLeft(lblScore);
-            var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
-            var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
+
+            double newTop = top + 120;
+            double newLeft = left + 50;
+
+            var moveAnimTop = new DoubleAnimation(top, newTop , new Duration(TimeSpan.FromSeconds(1.0)));
+            var moveAnimLeft = new DoubleAnimation(left, newLeft, new Duration(TimeSpan.FromSeconds(1.0)));
+
+            moveAnimLeft.FillBehavior = FillBehavior.Stop;
+            moveAnimTop.FillBehavior = FillBehavior.Stop;
+
+            Canvas.SetTop(lblScore, newTop);
+            Canvas.SetLeft(lblScore, newLeft);
+
             lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
             lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
-        
+
+        private bool slideCol(int column, int SlideDistance)
+        {
+            Rectangle rect = getRectangle(column, 0);
+            int rows = gameGrid.RowDefinitions.Count;
+
+            if (rect == null)
+                return false;
+
+            for (int row = 0; row < rows; row++)
+            {
+                rect = getRectangle(column, row);
+
+                if (rect == null)
+                    break;
+
+                Grid.SetColumn(rect, column - SlideDistance);
+
+                double width = rect.Width;
+
+                var T = new TranslateTransform(width * SlideDistance, 0);
+                rect.RenderTransform = T;
+                Duration duration = new Duration(new TimeSpan(0, 0, 0, 0, 200 * SlideDistance));
+                DoubleAnimation anim = new DoubleAnimation(0, duration);
+                T.BeginAnimation(TranslateTransform.XProperty, anim);
+            }
+            
+            return true;
+
+        }
 
     }
 }
