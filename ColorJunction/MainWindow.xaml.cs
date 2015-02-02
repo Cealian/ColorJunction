@@ -327,8 +327,9 @@ namespace ColorJunction
 
             int points = (removedRects - 1) * 2;
             _score += points;
-            lblScore.Content = "Score: " + _score + "(+" + points + ")";
-          
+            lblScore.Content = "Score: " + _score;
+           
+
             popupPoints(points);
             dropBlocks();
             slideBlocks();
@@ -381,6 +382,9 @@ namespace ColorJunction
             else
             {
                 gameGrid.Opacity = 0.5;
+                movelbl();
+                GameOverTxt.Text = "Game Over";
+
             }
         }
 
@@ -663,8 +667,7 @@ namespace ColorJunction
             Canvas.SetTop(scrollScore, p.Y - scrollScore.Height / 2);
 
             DoubleAnimation animation = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromSeconds(1.0)));
-            
-           
+                       
             movePopupPoints(p);
             
             scrollScore.BeginAnimation(Rectangle.OpacityProperty, animation);
@@ -725,6 +728,17 @@ namespace ColorJunction
 
             return true;
 
+        }
+
+        private void movelbl()
+        {
+            var top = Canvas.GetTop(lblScore);
+            var left = Canvas.GetLeft(lblScore);
+            var moveAnimTop = new DoubleAnimation(top, 120 - top , new Duration(TimeSpan.FromSeconds(1.0)));
+            var moveAnimLeft = new DoubleAnimation(left, 50-left, new Duration(TimeSpan.FromSeconds(1.0)));
+            lblScore.BeginAnimation(Canvas.TopProperty, moveAnimTop);
+            lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);
+            
         }
 
     }

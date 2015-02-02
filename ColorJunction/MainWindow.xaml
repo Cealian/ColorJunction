@@ -17,9 +17,9 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
             </Grid>
-            <Label Name="lblScore" Content="Points: 0" Canvas.Left="10" Canvas.Top="10" />
-            <TextBlock Name="txtScore" Width="65" Height="24" Canvas.Left="70" Canvas.Top="10"></TextBlock>
+            <Label Name="lblScore" Content="Score: 0" Foreground="#FFFF8B00" FontSize="20" FontWeight="Bold" Canvas.Left="10" Canvas.Top="10" />          
             <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFF8B00" FontSize="36" FontWeight="Bold" IsHitTestVisible="False"/>
+            <TextBlock Name="GameOverTxt" TextAlignment="Center" Foreground="Black" IsHitTestVisible="False" Height="30" Width="140" Canvas.Left="27" Canvas.Top="79" FontSize="22" FontWeight="Bold" FontFamily="Segoe Print"></TextBlock>
             <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
             <Button Content="Exit" Name="btnexit" Click="btnexit_Click" Canvas.Left="237" Canvas.Top="13" Width="75"/>
             <Button Content="Menu" Canvas.Left="237" Canvas.Top="50" Width="75" Click="menubtn_Click"/>
