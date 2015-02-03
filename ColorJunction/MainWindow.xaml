@@ -18,6 +18,7 @@
                 </Grid.RenderTransform>
             </Grid>
             <Label Name="lblScore" Content="Score: 0" Foreground="#FFFF8B00" FontSize="20" FontWeight="Bold" Canvas.Left="10" Canvas.Top="10" />
+            <TextBlock Name="tutorialText" Width="180" Height="40" FontSize="8" Canvas.Left="10" Canvas.Top="45" TextAlignment="Left"/>
             <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFF8B00" FontSize="36" FontWeight="Bold" IsHitTestVisible="False"/>
             <TextBlock Name="GameOverTxt" TextAlignment="Center" Foreground="Black" IsHitTestVisible="False" Height="30" Width="140" Canvas.Left="27" Canvas.Top="79" FontSize="22" FontWeight="Bold" FontFamily="Segoe Print"></TextBlock>
             <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
