@@ -470,7 +470,7 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D2)
             {
-                // 2
+                centerGrid();
             }
             else if (e.Key == Key.D3)
             {
@@ -586,6 +586,13 @@ namespace ColorJunction
 
                 fillGrid(columns+1);
             }
+        }
+
+        void centerGrid() 
+        {
+            Thickness margin = new Thickness();
+            margin.Bottom = gameGrid.Margin.Bottom + 10;
+            gameGrid.Margin = margin;
         }
 
         int getComboSize(Rectangle tRectangle) {
