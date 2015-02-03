@@ -79,7 +79,7 @@
             </Button.Resources>
 
         </Button>
-        <Label Content="Color Junction" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="108,55,0,0" VerticalAlignment="Top" Width="303" Height="57" Foreground="#FFE0C621" FontWeight="Bold" FontStyle="Italic" FontSize="36" FontFamily="Segoe Print"/>
+        <Label Content="Color Junction" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="108,55,0,0" VerticalAlignment="Top" Width="303" Height="57" Foreground="#FF0074FF" FontWeight="Bold" FontStyle="Italic" FontSize="36" FontFamily="Segoe Print"/>
 
     </Grid>
 </Window>
