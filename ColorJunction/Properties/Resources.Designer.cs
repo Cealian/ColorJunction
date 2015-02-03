@@ -1031,18 +1031,6 @@ namespace ColorJunction.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to ColorJunction!
-        ///
-        ///This game is about removing clusters of colored cubes. Click on clusters of two or more of the same color to remove them from the board.
-        ///Bigger clusters give you more points. Good luck!.
-        /// </summary>
-        internal static string Tut_ENG {
-            get {
-                return ResourceManager.GetString("Tut_ENG", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Yellow__000 {
