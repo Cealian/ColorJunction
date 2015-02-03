@@ -382,7 +382,7 @@ namespace ColorJunction
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
-                gameOver();
+               // gameOver();
             }
         }
 
