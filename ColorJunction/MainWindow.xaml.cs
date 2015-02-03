@@ -59,7 +59,7 @@ namespace ColorJunction
             imageBrushArray[3] = new ImageBrush();
 
             imageBrushArray[0].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecBlå.png"));
-            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGul.png"));
+            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGulTest.png"));
             imageBrushArray[2].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGrön.png"));
             imageBrushArray[3].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecRöd.png"));
 

@@ -24,7 +24,7 @@
             <Button Content="Exit" Name="btnexit" Click="btnexit_Click" Canvas.Left="237" Canvas.Top="13" Width="75"/>
             <Button Content="Menu" Canvas.Left="237" Canvas.Top="50" Width="75" Click="menubtn_Click"/>
             <Button Name="btnRestart"  Content="Restart" Canvas.Left="237" Canvas.Top="87" Width="75" Click="restatbtn_Click"/>
-            <TextBlock Name="txtEnterName" Width="140" Canvas.Left="27" IsEnabled="False" Canvas.Top="150"></TextBlock>
+            <TextBlock Name="txtEnterName" IsHitTestVisible="False" Width="140" Canvas.Left="27" IsEnabled="False" Canvas.Top="150"></TextBlock>
             <TextBox Name="txtnameinput" Visibility="Hidden" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="27" Canvas.Top="166"/>
             <Button Name="btnSubmit" Content="Submit" Canvas.Left="79" Canvas.Top="189" Width="75" Visibility="Hidden" Click="btnSubmit_Click"/>
             <TextBlock Name="txtHighscore" Canvas.Left="-121" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="54"/>
