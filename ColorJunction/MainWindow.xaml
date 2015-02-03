@@ -28,7 +28,7 @@
             <TextBlock Name="txtEnterName" IsHitTestVisible="False" Width="117" Canvas.Left="37" IsEnabled="False" Canvas.Top="148"></TextBlock>
             <TextBox Name="txtnameinput" Visibility="Hidden" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="35" Canvas.Top="166"/>
             <Button Name="btnSubmit" Content="Submit" Canvas.Left="98" Canvas.Top="191" Width="56" Visibility="Hidden" Click="btnSubmit_Click"/>
-            <TextBlock Name="txtHighscore" Canvas.Left="-121" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="54" FontFamily="Segoe Print"/>
+            <TextBlock Name="txtHighscore" Canvas.Left="-121" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="46" FontFamily="Segoe Print"/>
 
         </Canvas>
     </Viewbox>
