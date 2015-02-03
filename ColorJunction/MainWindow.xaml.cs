@@ -524,6 +524,7 @@ namespace ColorJunction
             if (!File.Exists("Highscore"))
             {
                 File.WriteAllText("Highscore", txtnameinput.Text + ":" + newScore + ";");
+                updateHighScore();
                 return;
             }
 
@@ -570,8 +571,7 @@ namespace ColorJunction
                     output += scores[j].name + ":" + scores[j].points + ";";
                 }
             }
-
-            txtHighscore.Text = output;
+            updateHighScore();
 
             File.WriteAllText("Highscore", output);
 
@@ -600,6 +600,8 @@ namespace ColorJunction
                     place++;
                 }
             }
+
+
         }
 
         bool isValidMove(Rectangle testRectangle)
