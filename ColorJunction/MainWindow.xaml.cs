@@ -398,7 +398,6 @@ namespace ColorJunction
             else 
             {
                 checkPossibleMoves();
-            
             }
         }
 
@@ -448,8 +447,8 @@ namespace ColorJunction
             {
                 if (gameGrid.Children.Count == 0) 
                 {
-                    popupPoints(20);
-                    _score = _score + 20;
+                    popupPoints(50);
+                    _score = _score + 50;
                     lblScore.Content = "Score: " + _score;
                 }
                 gameGrid.Opacity = 0.5;
