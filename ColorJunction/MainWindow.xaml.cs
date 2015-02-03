@@ -435,10 +435,12 @@ namespace ColorJunction
                 if (gameGrid.Children.Count != 0)
                 {
                     tutorialText.Text = "It didn't work this time but now you've got\nthe hang of it! " + postTutorial;
+                    gameGrid.Opacity = 0.5;
                 }
                 else 
                 {
                     tutorialText.Text = "Congrats! You've got the hang of it now!" + postTutorial;
+                    gameGrid.Opacity = 0.5;
                 }   
             } 
             else if (movesPossible)
