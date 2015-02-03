@@ -32,8 +32,7 @@ namespace ColorJunction
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            System.Media.SoundPlayer exitPlay = new System.Media.SoundPlayer();
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
@@ -49,13 +48,6 @@ namespace ColorJunction
             Tutorial t = new Tutorial();
             this.Close();
             t.Show();
-        }
-
-        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Settings s = new Settings();
-            this.Close();
-            s.Show();
         }
     }
 }

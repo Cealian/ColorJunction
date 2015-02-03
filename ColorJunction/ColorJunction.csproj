@@ -51,6 +51,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -68,9 +69,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
     </Compile>
@@ -90,10 +88,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Splash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,17 +126,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="RecGul.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="media\RecBlå.png" />
     <Resource Include="media\RecGrön.png" />
     <Resource Include="media\RecGul.png" />
     <Resource Include="media\RecRöd.png" />
     <Resource Include="media\splashscreen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="media\media_repeat_alt.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="media\Background.png" />
@@ -163,6 +151,133 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\Blue Square\Blue__000.png" />
+    <Resource Include="media\Blue Square\Blue__001.png" />
+    <Resource Include="media\Blue Square\Blue__002.png" />
+    <Resource Include="media\Blue Square\Blue__003.png" />
+    <Resource Include="media\Blue Square\Blue__004.png" />
+    <Resource Include="media\Blue Square\Blue__005.png" />
+    <Resource Include="media\Blue Square\Blue__006.png" />
+    <Resource Include="media\Blue Square\Blue__007.png" />
+    <Resource Include="media\Blue Square\Blue__008.png" />
+    <Resource Include="media\Blue Square\Blue__009.png" />
+    <Resource Include="media\Blue Square\Blue__010.png" />
+    <Resource Include="media\Blue Square\Blue__011.png" />
+    <Resource Include="media\Blue Square\Blue__012.png" />
+    <Resource Include="media\Blue Square\Blue__013.png" />
+    <Resource Include="media\Blue Square\Blue__014.png" />
+    <Resource Include="media\Blue Square\Blue__015.png" />
+    <Resource Include="media\Blue Square\Blue__016.png" />
+    <Resource Include="media\Blue Square\Blue__017.png" />
+    <Resource Include="media\Blue Square\Blue__018.png" />
+    <Resource Include="media\Blue Square\Blue__019.png" />
+    <Resource Include="media\Blue Square\Blue__020.png" />
+    <Resource Include="media\Blue Square\Blue__021.png" />
+    <Resource Include="media\Blue Square\Blue__022.png" />
+    <Resource Include="media\Blue Square\Blue__023.png" />
+    <Resource Include="media\Blue Square\Blue__024.png" />
+    <Resource Include="media\Blue Square\Blue__025.png" />
+    <Resource Include="media\Blue Square\Blue__026.png" />
+    <Resource Include="media\Blue Square\Blue__027.png" />
+    <Resource Include="media\Blue Square\Blue__028.png" />
+    <Resource Include="media\Blue Square\Blue__029.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\Green Square\Green__000.png" />
+    <Resource Include="media\Green Square\Green__001.png" />
+    <Resource Include="media\Green Square\Green__002.png" />
+    <Resource Include="media\Green Square\Green__003.png" />
+    <Resource Include="media\Green Square\Green__004.png" />
+    <Resource Include="media\Green Square\Green__005.png" />
+    <Resource Include="media\Green Square\Green__006.png" />
+    <Resource Include="media\Green Square\Green__007.png" />
+    <Resource Include="media\Green Square\Green__008.png" />
+    <Resource Include="media\Green Square\Green__009.png" />
+    <Resource Include="media\Green Square\Green__010.png" />
+    <Resource Include="media\Green Square\Green__011.png" />
+    <Resource Include="media\Green Square\Green__012.png" />
+    <Resource Include="media\Green Square\Green__013.png" />
+    <Resource Include="media\Green Square\Green__014.png" />
+    <Resource Include="media\Green Square\Green__015.png" />
+    <Resource Include="media\Green Square\Green__016.png" />
+    <Resource Include="media\Green Square\Green__017.png" />
+    <Resource Include="media\Green Square\Green__018.png" />
+    <Resource Include="media\Green Square\Green__019.png" />
+    <Resource Include="media\Green Square\Green__020.png" />
+    <Resource Include="media\Green Square\Green__021.png" />
+    <Resource Include="media\Green Square\Green__022.png" />
+    <Resource Include="media\Green Square\Green__023.png" />
+    <Resource Include="media\Green Square\Green__024.png" />
+    <Resource Include="media\Green Square\Green__025.png" />
+    <Resource Include="media\Green Square\Green__026.png" />
+    <Resource Include="media\Green Square\Green__027.png" />
+    <Resource Include="media\Green Square\Green__028.png" />
+    <Resource Include="media\Green Square\Green__029.png" />
+    <Resource Include="media\Red Square\Red__000.png" />
+    <Resource Include="media\Red Square\Red__001.png" />
+    <Resource Include="media\Red Square\Red__002.png" />
+    <Resource Include="media\Red Square\Red__003.png" />
+    <Resource Include="media\Red Square\Red__004.png" />
+    <Resource Include="media\Red Square\Red__005.png" />
+    <Resource Include="media\Red Square\Red__006.png" />
+    <Resource Include="media\Red Square\Red__007.png" />
+    <Resource Include="media\Red Square\Red__008.png" />
+    <Resource Include="media\Red Square\Red__009.png" />
+    <Resource Include="media\Red Square\Red__010.png" />
+    <Resource Include="media\Red Square\Red__011.png" />
+    <Resource Include="media\Red Square\Red__012.png" />
+    <Resource Include="media\Red Square\Red__013.png" />
+    <Resource Include="media\Red Square\Red__014.png" />
+    <Resource Include="media\Red Square\Red__015.png" />
+    <Resource Include="media\Red Square\Red__016.png" />
+    <Resource Include="media\Red Square\Red__017.png" />
+    <Resource Include="media\Red Square\Red__018.png" />
+    <Resource Include="media\Red Square\Red__019.png" />
+    <Resource Include="media\Red Square\Red__020.png" />
+    <Resource Include="media\Red Square\Red__021.png" />
+    <Resource Include="media\Red Square\Red__022.png" />
+    <Resource Include="media\Red Square\Red__023.png" />
+    <Resource Include="media\Red Square\Red__024.png" />
+    <Resource Include="media\Red Square\Red__025.png" />
+    <Resource Include="media\Red Square\Red__026.png" />
+    <Resource Include="media\Red Square\Red__027.png" />
+    <Resource Include="media\Red Square\Red__028.png" />
+    <Resource Include="media\Red Square\Red__029.png" />
+    <Resource Include="media\Yellow Square\Yellow__000.png" />
+    <Resource Include="media\Yellow Square\Yellow__001.png" />
+    <Resource Include="media\Yellow Square\Yellow__002.png" />
+    <Resource Include="media\Yellow Square\Yellow__003.png" />
+    <Resource Include="media\Yellow Square\Yellow__004.png" />
+    <Resource Include="media\Yellow Square\Yellow__005.png" />
+    <Resource Include="media\Yellow Square\Yellow__006.png" />
+    <Resource Include="media\Yellow Square\Yellow__007.png" />
+    <Resource Include="media\Yellow Square\Yellow__008.png" />
+    <Resource Include="media\Yellow Square\Yellow__009.png" />
+    <Resource Include="media\Yellow Square\Yellow__010.png" />
+    <Resource Include="media\Yellow Square\Yellow__011.png" />
+    <Resource Include="media\Yellow Square\Yellow__012.png" />
+    <Resource Include="media\Yellow Square\Yellow__013.png" />
+    <Resource Include="media\Yellow Square\Yellow__014.png" />
+    <Resource Include="media\Yellow Square\Yellow__015.png" />
+    <Resource Include="media\Yellow Square\Yellow__016.png" />
+    <Resource Include="media\Yellow Square\Yellow__017.png" />
+    <Resource Include="media\Yellow Square\Yellow__018.png" />
+    <Resource Include="media\Yellow Square\Yellow__019.png" />
+    <Resource Include="media\Yellow Square\Yellow__020.png" />
+    <Resource Include="media\Yellow Square\Yellow__021.png" />
+    <Resource Include="media\Yellow Square\Yellow__022.png" />
+    <Resource Include="media\Yellow Square\Yellow__023.png" />
+    <Resource Include="media\Yellow Square\Yellow__024.png" />
+    <Resource Include="media\Yellow Square\Yellow__025.png" />
+    <Resource Include="media\Yellow Square\Yellow__026.png" />
+    <Resource Include="media\Yellow Square\Yellow__027.png" />
+    <Resource Include="media\Yellow Square\Yellow__028.png" />
+    <Resource Include="media\Yellow Square\Yellow__029.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="media\RecGulTest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

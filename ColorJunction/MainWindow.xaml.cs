@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
 using System.Windows.Media.Animation;
 using System.Reflection;
 
@@ -52,6 +51,7 @@ namespace ColorJunction
             if (tutorialstep == 1) 
             {
                 btnRestart.IsEnabled = false;
+                tutorialText.Text = "Let's learn how to play Color Junction! \n First;\n Please try holding your cursor over the squares.";
             }
             _score = 0;
 
@@ -65,15 +65,15 @@ namespace ColorJunction
             imageBrushArray[2] = new ImageBrush();
             imageBrushArray[3] = new ImageBrush();
 
-            imageBrushArray[0].ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
-            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
-            imageBrushArray[2].ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));
-            imageBrushArray[3].ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+            imageBrushArray[0].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecBlå.png"));
+            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGulTest.png"));
+            imageBrushArray[2].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGrön.png"));
+            imageBrushArray[3].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecRöd.png"));
 
-            string blueSource = "../../media/Blue Square/";
-            string redSource = "../../media/Red Square/";
-            string greenSource = "../../media/Green Square/";
-            string yellowSource = "../../media/Yellow Square/";
+            string blueSource = "pack://application:,,,/media/Blue Square/";
+            string redSource = "pack://application:,,,/media/Red Square/";
+            string greenSource = "pack://application:,,,/media/Green Square/";
+            string yellowSource = "pack://application:,,,/media/Yellow Square/";
 
             BitmapImage[] blue = createBitmapArray(30, blueSource, "Blue__", 3);
             BitmapImage[] red = createBitmapArray(30, redSource, "Red__", 3);
@@ -89,7 +89,6 @@ namespace ColorJunction
 
             for (int i = 0; i < columns; i++)
             {
-
                 ColumnDefinition col = new ColumnDefinition();
                 col.Width = gridLength;
                 gameGrid.ColumnDefinitions.Add(col);
@@ -117,7 +116,26 @@ namespace ColorJunction
                             random = 0;                        
                         }
                     }
-                    else 
+                    else if (tutorialstep == 4) 
+                    {
+                        random = 0;
+                        if (j < 2) 
+                        {
+                            random = 2;
+                        }
+                        if (i % 2 == 0)
+                        {
+                            if (j == 3 || j == 5)
+                            {
+                                random = 3;
+                            }
+                            else
+                            {
+                                random = 1;
+                            }
+                        }
+                    }
+                    else
                     {
                         random = rnd.Next(0, 4);
                     }
@@ -184,7 +202,7 @@ namespace ColorJunction
                 BitmapImage bmi = new BitmapImage();
                 string fullSource = sourcePath + name + imgNo + imageFormat;
                 bmi.BeginInit();
-                bmi.UriSource = new Uri(fullSource,UriKind.Relative);
+                bmi.UriSource = new Uri(fullSource);
                 bmi.EndInit();             
                 BtArray[i] = bmi;
             }
@@ -193,6 +211,10 @@ namespace ColorJunction
         //Restores the squares to their original images 
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
+            if (tutorialstep == 1)
+            {
+                tutorialText.Text = "Please try holding your cursor over the squares.";
+            }
             int columns = gameGrid.ColumnDefinitions.Count;
 
             for (int column = 0; column < columns; column++)
@@ -241,6 +263,14 @@ namespace ColorJunction
 
             que.Enqueue(hRectangle);
 
+            if (tutorialstep == 1) 
+            {
+                tutorialText.Text = "Just like that! Notice how the squares pulsate?\n Try clicking on them.";
+            }
+            else if (tutorialstep == 4) 
+            {
+                tutorialText.Text = "Here things get a little tricky.\nYou can NOT click on single squares, thus the red\nsquares can't be removed for now. If you clicked\nthe blue pair between them though...";
+            }
 
             while (que.Count > 0)
             {
@@ -334,13 +364,10 @@ namespace ColorJunction
             int points = (removedRects - 1) * 2;
             _score += points;
             lblScore.Content = "Score: " + _score;
-            
-           
+
             popupPoints(points);
             dropBlocks();
-            slideBlocks();
-            checkPossibleMoves();
-            
+            slideBlocks();         
 
             if (tutorialstep == 1)
             {
@@ -350,15 +377,34 @@ namespace ColorJunction
                 gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
 
                 fillGrid(3);
+                tutorialText.Height = 70;
+                tutorialText.Text = "Good!\nDid you notice the little orange number\npoping up after you clicked the squares?\n Try clicking either the yellow or the blue squares.";
             }
             else if (tutorialstep == 2)
             {
-                tutorialstep = 3;              
+                tutorialstep = 3;
+                tutorialText.Text = "Great!\n The orange number is the number of points you\nget after removing a group of squares.\nThe more squares, the more points.";
             }
-            else if (tutorialstep == 3) 
+            else if (tutorialstep == 3)
             {
-                tutorialstep = 0;
-                btnRestart.IsEnabled = true;
+                tutorialstep = 4;
+                tutorialText.Text = "You can keep track of all your points\nby looking at the number next to 'Score'.\n Your goal is to get as many points as possible.\n ";
+                
+                gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
+                gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
+                gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
+
+                fillGrid(4);
+            }
+            else if(tutorialstep == 4)
+            {
+                    tutorialstep = 5;
+                    tutorialText.Text = "Clicking a group of squares can change the entire\ngame-board. Always try to figure out a way to \nclear the whole board. Also, see that Hint button?\n If you'restuck but the game isn't over, pressing it \nwill show a valid combo.";                    
+                  
+            }
+            else 
+            {
+                checkPossibleMoves();
             }
         }
 
@@ -378,14 +424,40 @@ namespace ColorJunction
                         movesPossible = true;
                     }
                 }
+                
             }
-
-            if (movesPossible)
+            string postTutorial = "\n\nNow you can;\nClick restart to start a new real game.\nClick Menu and return to the main menu\nClick Exit to exit the game.";
+            
+            
+             if (!movesPossible && tutorialstep == 5) 
+            {
+                tutorialstep = 0;
+                tutorialText.Height = 90;
+                btnRestart.IsEnabled = true;
+                
+                if (gameGrid.Children.Count != 0)
+                {
+                    tutorialText.Text = "It didn't work this time but now you've got\nthe hang of it! " + postTutorial;
+                    gameGrid.Opacity = 0.5;
+                }
+                else 
+                {
+                    tutorialText.Text = "Congrats! You've got the hang of it now!" + postTutorial;
+                    gameGrid.Opacity = 0.5;
+                }   
+            } 
+            else if (movesPossible)
             {
                 gameGrid.Opacity = 1;
             }
             else
             {
+                if (gameGrid.Children.Count == 0) 
+                {
+                    popupPoints(50);
+                    _score = _score + 50;
+                    lblScore.Content = "Score: " + _score;
+                }
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
@@ -432,6 +504,7 @@ namespace ColorJunction
             txtEnterName.Text = "Enter your name: ";
             txtnameinput.Visibility = Visibility.Visible;
             btnSubmit.Visibility = Visibility.Visible;
+            btnHint.Visibility = Visibility.Hidden;
         }
 
         private void highScore() 
@@ -790,11 +863,13 @@ namespace ColorJunction
 
         private void btnexit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            tutorialText.Height = 40;
+            Application.Current.Shutdown();
         }
 
         private void menubtn_Click(object sender, RoutedEventArgs e)
         {
+            tutorialText.Height = 40;
             Splash s = new Splash();
             this.Close();
             s.Show();
@@ -802,6 +877,8 @@ namespace ColorJunction
 
         private void restatbtn_Click(object sender, RoutedEventArgs e) 
         {
+            tutorialText.Height = 40;
+            tutorialText.Text = "";
             gameGrid.Children.RemoveRange(0, gameGrid.Children.Count);
             gameGrid.ColumnDefinitions.RemoveRange(0, gameGrid.ColumnDefinitions.Count);
             gameGrid.RowDefinitions.RemoveRange(0, gameGrid.RowDefinitions.Count);
@@ -815,6 +892,7 @@ namespace ColorJunction
             txtEnterName.Text = "";
             txtnameinput.Visibility = Visibility.Hidden;
             btnSubmit.Visibility = Visibility.Hidden;
+            btnHint.Visibility = Visibility.Visible;
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 
