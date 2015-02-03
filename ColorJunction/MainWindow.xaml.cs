@@ -382,6 +382,7 @@ namespace ColorJunction
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
+               // gameOver();
             }
         }
 
@@ -395,8 +396,8 @@ namespace ColorJunction
                 {
                     slideCol(column+1);
                 }
-            }   
-        }
+                                }
+                            }
 
         void dropBlocks()
         {
@@ -421,7 +422,27 @@ namespace ColorJunction
         private void highScore() 
         {
             // Gameover, save hs?
+            txtEnterName.Text = "Enter your name: ";
+            txtnameinput.Visibility = Visibility.Visible;
+            btnSubmit.Visibility = Visibility.Visible;
         }
+
+        //private void submitHighscore()
+        //{
+        //    string file = "../../Highscore.txt";
+
+        //    try
+        //    {
+        //        using (StreamReader sr = new StreamReader())
+        //        {
+
+        //        }
+        //    }
+        //    catch (FileNotFoundException e)
+        //    {
+        //        StreamWriter sw = new StreamWriter();
+        //    }
+        //}
 
         bool isValidMove(Rectangle testRectangle)
         {
@@ -794,5 +815,11 @@ namespace ColorJunction
                 T.BeginAnimation(TranslateTransform.XProperty, anim);
             }
         }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

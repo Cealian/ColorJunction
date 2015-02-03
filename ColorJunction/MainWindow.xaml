@@ -17,13 +17,18 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
             </Grid>
-            <Label Name="lblScore" Content="Score: 0" Foreground="#FFFF8B00" FontSize="20" FontWeight="Bold" Canvas.Left="10" Canvas.Top="10" />          
+            <Label Name="lblScore" Content="Score: 0" Foreground="#FFFF8B00" FontSize="20" FontWeight="Bold" Canvas.Left="10" Canvas.Top="10" />
             <TextBlock Name="scrollScore" Width="45" Height="40" TextAlignment="Center" Foreground="#FFFF8B00" FontSize="36" FontWeight="Bold" IsHitTestVisible="False"/>
             <TextBlock Name="GameOverTxt" TextAlignment="Center" Foreground="Black" IsHitTestVisible="False" Height="30" Width="140" Canvas.Left="27" Canvas.Top="79" FontSize="22" FontWeight="Bold" FontFamily="Segoe Print"></TextBlock>
             <Button Name="btnHint" Content="Hint"  Canvas.Left="153" Canvas.Top="13" Width="37" Click="btnHint_Click"/>
             <Button Content="Exit" Name="btnexit" Click="btnexit_Click" Canvas.Left="237" Canvas.Top="13" Width="75"/>
             <Button Content="Menu" Canvas.Left="237" Canvas.Top="50" Width="75" Click="menubtn_Click"/>
             <Button Name="btnRestart"  Content="Restart" Canvas.Left="237" Canvas.Top="87" Width="75" Click="restatbtn_Click"/>
+            <TextBlock Name="txtEnterName" Width="140" Canvas.Left="27" IsEnabled="False" Canvas.Top="150"></TextBlock>
+            <TextBox Name="txtnameinput" Visibility="Hidden" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Canvas.Left="27" Canvas.Top="166"/>
+            <Button Name="btnSubmit" Content="Submit" Canvas.Left="79" Canvas.Top="189" Width="75" Visibility="Hidden" Click="btnSubmit_Click"/>
+            <TextBlock Name="txtHighscore" Canvas.Left="-121" TextWrapping="Wrap" Text="TextBlock" Canvas.Top="54"/>
+
         </Canvas>
     </Viewbox>
 </Window>
