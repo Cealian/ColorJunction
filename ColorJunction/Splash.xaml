@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ColorJunction.Splash"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Splash" Height="500" Width="500" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" BorderBrush="Transparent">
+        Title="Splash" Height="500" Width="500" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" BorderBrush="Transparent" ResizeMode="NoResize">
     <Window.Background>
         <ImageBrush/>
     </Window.Background>
