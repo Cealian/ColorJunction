@@ -515,11 +515,16 @@ namespace ColorJunction
             btnSubmit.Visibility = Visibility.Visible;
         }
 
-        private void submitHighscore(string name, int score)
+        private void submitHighscore()
         {
 
             int newScore = _score;
             restatbtn_Click(null, null);
+
+            if (txtnameinput.Text.Contains(":") || txtnameinput.Text.Contains(";") || txtnameinput.Text.Length < 1)
+            {
+                txtnameinput.Text = "Player";
+            }
 
             if (!File.Exists("Highscore"))
             {
@@ -571,10 +576,10 @@ namespace ColorJunction
                     output += scores[j].name + ":" + scores[j].points + ";";
                 }
             }
-            updateHighScore();
 
             File.WriteAllText("Highscore", output);
 
+            updateHighScore();
 
         }
 
@@ -979,7 +984,7 @@ namespace ColorJunction
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            submitHighscore(txtnameinput.Text, _score);
+            submitHighscore();
         }
     }
 }
