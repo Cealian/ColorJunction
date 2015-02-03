@@ -394,10 +394,10 @@ namespace ColorJunction
             {
                 if (getRectangle(column, 0) == null)
                 {
-                    slideCol(column+1);
+                    slideCol(column + 1);
                 }
-                                }
-                            }
+            }
+        }
 
         void dropBlocks()
         {
@@ -436,22 +436,22 @@ namespace ColorJunction
             btnSubmit.Visibility = Visibility.Visible;
         }
 
-        //private void submitHighscore()
-        //{
-        //    string file = "../../Highscore.txt";
+        private void submitHighscore(string name, int score)
+        {
+            string file = "Highscore";
 
-        //    try
-        //    {
-        //        using (StreamReader sr = new StreamReader())
-        //        {
-
-        //        }
-        //    }
-        //    catch (FileNotFoundException e)
-        //    {
-        //        StreamWriter sw = new StreamWriter();
-        //    }
-        //}
+            //try
+            //{
+            //    using (StreamWriter sw = new StreamReader())
+            //    {
+                 
+            //    }
+            //}
+            //catch (FileNotFoundException e)
+            //{
+            //    StreamWriter sw = new StreamWriter();
+            //}
+        }
 
         bool isValidMove(Rectangle testRectangle)
         {
