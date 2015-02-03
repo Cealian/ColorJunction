@@ -494,6 +494,7 @@ namespace ColorJunction
             txtEnterName.Text = "Enter your name: ";
             txtnameinput.Visibility = Visibility.Visible;
             btnSubmit.Visibility = Visibility.Visible;
+            btnHint.Visibility = Visibility.Hidden;
         }
 
         private void highScore() 
@@ -821,6 +822,7 @@ namespace ColorJunction
             txtEnterName.Text = "";
             txtnameinput.Visibility = Visibility.Hidden;
             btnSubmit.Visibility = Visibility.Hidden;
+            btnHint.Visibility = Visibility.Visible;
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 
