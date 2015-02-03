@@ -382,7 +382,7 @@ namespace ColorJunction
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
-               // gameOver();
+                gameOver();
             }
         }
 
@@ -417,6 +417,15 @@ namespace ColorJunction
                     }
                 }
             }
+        }
+
+
+        private void gameOver()
+        {
+            // Gameover, save hs?
+            txtEnterName.Text = "Enter your name: ";
+            txtnameinput.Visibility = Visibility.Visible;
+            btnSubmit.Visibility = Visibility.Visible;
         }
 
         private void highScore() 
@@ -730,6 +739,9 @@ namespace ColorJunction
            // Canvas.GetLeft(lblScore);
             Canvas.SetTop(lblScore, 10);
             Canvas.SetLeft(lblScore, 10);
+            txtEnterName.Text = "";
+            txtnameinput.Visibility = Visibility.Hidden;
+            btnSubmit.Visibility = Visibility.Hidden;
         }
 
         private bool dropDownRect(int column, int row, int dropHeight) 
