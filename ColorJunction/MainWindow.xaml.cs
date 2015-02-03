@@ -15,20 +15,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 namespace ColorJunction
 {
-
-    struct rectCoords {
-        public rectCoords(int c, int r) {
-            column = c;
-            row = r;
-        }
-        public int column, row;
-    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
+    struct Score
+    {
+        public Score(string name, int points)
+        {
+            this.name = name;
+            this.points = points;
+        }
+
+        public string name;
+        public int points;
+    }
+
     public partial class MainWindow : Window
     {
         int _score = 0;
@@ -160,6 +166,7 @@ namespace ColorJunction
             }
 
             checkPossibleMoves();
+            updateHighScore();
         }
 
         //Creates an array of bitmapimages
@@ -419,7 +426,6 @@ namespace ColorJunction
             }
         }
 
-
         private void gameOver()
         {
             // Gameover, save hs?
@@ -438,19 +444,86 @@ namespace ColorJunction
 
         private void submitHighscore(string name, int score)
         {
-            string file = "Highscore";
+            if (!File.Exists("Highscore"))
+            {
+                File.WriteAllText("Highscore", txtnameinput.Text + ":" + _score + ";");
+                return;
+            }
 
-            //try
-            //{
-            //    using (StreamWriter sw = new StreamReader())
-            //    {
-                 
-            //    }
-            //}
-            //catch (FileNotFoundException e)
-            //{
-            //    StreamWriter sw = new StreamWriter();
-            //}
+            string highScore = File.ReadAllText("Highscore");
+            string[] entries = highScore.Split(';');
+            Score[] scores = new Score[entries.Length+1];
+
+            int i;
+            for (i = 0; i < entries.Length; i++)
+            {
+                if (entries[i].Length > 0)
+                {
+                    string[] entry = entries[i].Split(':');
+
+                    scores[i].name = entry[0];
+                    scores[i].points = Int32.Parse(entry[1]);
+                }
+            }
+
+            scores[i].name = txtnameinput.Text;
+            scores[i].points = _score;
+
+
+            // Sort hihgscore
+            for (int j = 0; j < scores.Length; j++)
+            {
+                for (int k = j; k < scores.Length; k++)
+                {
+                    if (scores[k].points > scores[j].points)
+                    {
+                        Score tmp = scores[j];
+                        scores[j] = scores[k];
+                        scores[k] = tmp;
+                    }
+                }
+            }
+
+
+            string output = "";
+            for (int j = 0; j < scores.Length && j < 5; j++)
+            {
+                if (scores[j].points > 0)
+                {
+                    output += scores[j].name + ":" + scores[j].points + ";";
+                }
+            }
+
+            txtHighscore.Text = output;
+
+            File.WriteAllText("Highscore", output);
+
+            restatbtn_Click(null, null);
+
+        }
+
+        private void updateHighScore() 
+        {
+            txtHighscore.Text = "Highscore\n";
+
+            if (!File.Exists("Highscore"))
+            {
+                return;
+            }
+
+            string highScore = File.ReadAllText("Highscore");
+            string[] entries = highScore.Split(';');
+
+            int place = 1;
+            foreach (string entry in entries)
+            {
+                if (entry.Length > 0)
+                {
+                    string[] score = entry.Split(':');
+                    txtHighscore.Text += place + ". " + score[0] + " - " + score[1] + "\n";
+                    place++;
+                }
+            }
         }
 
         bool isValidMove(Rectangle testRectangle)
@@ -489,7 +562,7 @@ namespace ColorJunction
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-
+            return; // Comment to activate test keys (don't)
             if (e.Key == Key.F5)
             {
                 restatbtn_Click(null, null);
@@ -500,7 +573,7 @@ namespace ColorJunction
             }
             else if (e.Key == Key.D2)
             {
-                centerGrid();
+                updateHighScore();
             }
             else if (e.Key == Key.D3)
             {
@@ -616,13 +689,6 @@ namespace ColorJunction
 
                 fillGrid(columns+1);
             }
-        }
-
-        void centerGrid() 
-        {
-            Thickness margin = new Thickness();
-            margin.Bottom = gameGrid.Margin.Bottom + 10;
-            gameGrid.Margin = margin;
         }
 
         int getComboSize(Rectangle tRectangle) {
@@ -830,8 +896,7 @@ namespace ColorJunction
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-
+            submitHighscore(txtnameinput.Text, _score);
         }
-
     }
 }
