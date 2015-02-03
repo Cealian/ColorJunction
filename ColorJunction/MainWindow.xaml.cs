@@ -517,9 +517,13 @@ namespace ColorJunction
 
         private void submitHighscore(string name, int score)
         {
+
+            int newScore = _score;
+            restatbtn_Click(null, null);
+
             if (!File.Exists("Highscore"))
             {
-                File.WriteAllText("Highscore", txtnameinput.Text + ":" + _score + ";");
+                File.WriteAllText("Highscore", txtnameinput.Text + ":" + newScore + ";");
                 return;
             }
 
@@ -540,7 +544,7 @@ namespace ColorJunction
             }
 
             scores[i].name = txtnameinput.Text;
-            scores[i].points = _score;
+            scores[i].points = newScore;
 
 
             // Sort hihgscore
@@ -571,7 +575,6 @@ namespace ColorJunction
 
             File.WriteAllText("Highscore", output);
 
-            restatbtn_Click(null, null);
 
         }
 
