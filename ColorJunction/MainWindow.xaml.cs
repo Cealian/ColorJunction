@@ -357,13 +357,10 @@ namespace ColorJunction
             int points = (removedRects - 1) * 2;
             _score += points;
             lblScore.Content = "Score: " + _score;
-            
-           
+
             popupPoints(points);
             dropBlocks();
-            slideBlocks();
-            
-            
+            slideBlocks();         
 
             if (tutorialstep == 1)
             {
@@ -401,7 +398,6 @@ namespace ColorJunction
             else 
             {
                 checkPossibleMoves();
-            
             }
         }
 
@@ -449,6 +445,12 @@ namespace ColorJunction
             }
             else
             {
+                if (gameGrid.Children.Count == 0) 
+                {
+                    popupPoints(50);
+                    _score = _score + 50;
+                    lblScore.Content = "Score: " + _score;
+                }
                 gameGrid.Opacity = 0.5;
                 movelbl();
                 GameOverTxt.Text = "Game Over";
