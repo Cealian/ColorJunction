@@ -51,19 +51,7 @@ namespace ColorJunction
         //Reads the textfile and prints out the tutorial text
         private void ShowText(string lang)
         {
-            try
-            {
-                using (StreamReader sr = new StreamReader("../../Tut_"+ lang +".txt"))
-                {
-                    String line = sr.ReadToEnd();
-                    tuttxt.Text = line;
-                }
-            }
-            catch (Exception e)
-            {
-                tuttxt.Text = "Lang filen kan inte läsas, " + e.Message;
-            }
-           
+                tuttxt.Text = "Welcome to ColorJunction! \n\nThis game is about removing clusters of colored cubes. \nClick on clusters of two or more of the same color to remove them from the board.\nBigger clusters give you more points. Good luck!";
         }
     }
 }

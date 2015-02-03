@@ -118,7 +118,388 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__027.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__028.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Blue__029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Blue Square\Blue__029.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__027.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__028.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green__029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Green Square\Green__029.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Highscore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Highscore;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RecBlå" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\RecBlå.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RecGrön" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\RecGrön.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RecGul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\RecGul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RecRöd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\RecRöd.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__027.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__028.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red__029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Red Square\Red__029.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="splashscreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\splashscreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tut_ENG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Tut_ENG.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Yellow__000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__003" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__004" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__004.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__006" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__006.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__008" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__010" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__011" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__013" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__017" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__017.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__018" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__018.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__019" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__019.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__020" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__020.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__021" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__021.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__022" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__023" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__023.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__024.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__025" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__025.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__026" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__026.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__027" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__027.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__028" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__028.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yellow__029" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\media\Yellow Square\Yellow__029.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

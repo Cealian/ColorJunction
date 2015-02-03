@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Drawing;
 using System.Windows.Media.Animation;
 
 namespace ColorJunction
@@ -59,15 +58,15 @@ namespace ColorJunction
             imageBrushArray[2] = new ImageBrush();
             imageBrushArray[3] = new ImageBrush();
 
-            imageBrushArray[0].ImageSource = new BitmapImage(new Uri("../../media/RecBlå.png", UriKind.Relative));
-            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("../../media/RecGul.png", UriKind.Relative));
-            imageBrushArray[2].ImageSource = new BitmapImage(new Uri("../../media/RecGrön.png", UriKind.Relative));
-            imageBrushArray[3].ImageSource = new BitmapImage(new Uri("../../media/RecRöd.png", UriKind.Relative));
+            imageBrushArray[0].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecBlå.png"));
+            imageBrushArray[1].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGul.png"));
+            imageBrushArray[2].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecGrön.png"));
+            imageBrushArray[3].ImageSource = new BitmapImage(new Uri("pack://application:,,,/media/RecRöd.png"));
 
-            string blueSource = "../../media/Blue Square/";
-            string redSource = "../../media/Red Square/";
-            string greenSource = "../../media/Green Square/";
-            string yellowSource = "../../media/Yellow Square/";
+            string blueSource = "pack://application:,,,/media/Blue Square/";
+            string redSource = "pack://application:,,,/media/Red Square/";
+            string greenSource = "pack://application:,,,/media/Green Square/";
+            string yellowSource = "pack://application:,,,/media/Yellow Square/";
 
             BitmapImage[] blue = createBitmapArray(30, blueSource, "Blue__", 3);
             BitmapImage[] red = createBitmapArray(30, redSource, "Red__", 3);
@@ -83,7 +82,6 @@ namespace ColorJunction
 
             for (int i = 0; i < columns; i++)
             {
-
                 ColumnDefinition col = new ColumnDefinition();
                 col.Width = gridLength;
                 gameGrid.ColumnDefinitions.Add(col);
@@ -177,7 +175,7 @@ namespace ColorJunction
                 BitmapImage bmi = new BitmapImage();
                 string fullSource = sourcePath + name + imgNo + imageFormat;
                 bmi.BeginInit();
-                bmi.UriSource = new Uri(fullSource,UriKind.Relative);
+                bmi.UriSource = new Uri(fullSource);
                 bmi.EndInit();             
                 BtArray[i] = bmi;
             }
@@ -724,7 +722,7 @@ namespace ColorJunction
 
         private void btnexit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void menubtn_Click(object sender, RoutedEventArgs e)
