@@ -403,7 +403,7 @@ namespace ColorJunction
             else if(tutorialstep == 4)
             {
                     tutorialstep = 5;
-                    tutorialText.Text = "Clicking a group of squares can change the entire\ngame-board. Always try to figure out a way to \nclear the whole board. Also, see that Hint button?\n If you'restuck but the game isn't over, pressing it \nwill show a valid combo.";                    
+                    tutorialText.Text = "Clicking a group of squares can change the entire\ngame-board and clearing the whole board will \nprovide 50 bonuspoints. Also, see the Hint button?\nIf you're stuck but the game isn't over, pressing it\nwill show a valid combo.";                    
                   
             }
             else 
@@ -448,6 +448,9 @@ namespace ColorJunction
                 else 
                 {
                     tutorialText.Text = "Congrats! You've got the hang of it now!" + postTutorial;
+                    popupPoints(50);
+                    _score = _score + 50;
+                    lblScore.Content = "Score: " + _score;
                     gameGrid.Opacity = 0.5;
                 }   
             } 
