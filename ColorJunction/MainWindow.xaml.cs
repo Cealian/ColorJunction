@@ -45,7 +45,8 @@ namespace ColorJunction
         {
             InitializeComponent();
         }
-        //Fills the grid with randomly generated square at the beginning of game
+
+        /* Fills the grid with columns*columns blocks */
         public void fillGrid(int columns)
         {
             if (tutorialstep == 1) 
@@ -187,7 +188,7 @@ namespace ColorJunction
             updateHighScore();
         }
 
-        //Creates an array of bitmapimages
+        /* Creates array of bitmapimages */
         public BitmapImage[] createBitmapArray(int noOfImages, string sourcePath, string name, int numberLength = 0, string imageFormat = ".png")
         {
             BitmapImage[] BtArray = new BitmapImage[noOfImages];
@@ -208,7 +209,8 @@ namespace ColorJunction
             }
             return BtArray;
         }
-        //Restores the squares to their original images 
+
+        /* Restores the squares to their original images */ 
         void rect_MouseLeave(object sender, MouseEventArgs e)
         {
             if (tutorialstep == 1)
@@ -244,7 +246,8 @@ namespace ColorJunction
                 }
             }
         }
-        //If the squares hovered over are a valid combo, show animated sprites
+
+        /* Show animated sprites if the squares hovered over are a valid combo */
         void rect_MouseEnter(object sender, MouseEventArgs e)
         {
             rect_MouseLeave(null, null);
@@ -314,6 +317,7 @@ namespace ColorJunction
             }
         }
 
+        /* Rectangle clicked: remove, drop & slide. Tutorial is in here. */
         void rect_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Rectangle clickedRect = sender as Rectangle;
@@ -408,6 +412,7 @@ namespace ColorJunction
             }
         }
 
+        /* Ends the game if there are no possible moves left */
         void checkPossibleMoves()
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -465,6 +470,7 @@ namespace ColorJunction
             }
         }
 
+        /* Slide blocks to the left if needed */
         void slideBlocks()
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -478,6 +484,7 @@ namespace ColorJunction
             }
         }
 
+        /* Drop blocks down if needed */
         void dropBlocks()
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -498,30 +505,23 @@ namespace ColorJunction
             }
         }
 
+        /* End game, save highscore? */
         private void gameOver()
         {
-            // Gameover, save hs?
             txtEnterName.Text = "Enter your name: ";
             txtnameinput.Visibility = Visibility.Visible;
             btnSubmit.Visibility = Visibility.Visible;
             btnHint.Visibility = Visibility.Hidden;
         }
 
-        private void highScore() 
-        {
-            // Gameover, save hs?
-            txtEnterName.Text = "Enter your name: ";
-            txtnameinput.Visibility = Visibility.Visible;
-            btnSubmit.Visibility = Visibility.Visible;
-        }
-
+        /* Save score in "Highscore" if it's in top 5 */
         private void submitHighscore()
         {
 
             int newScore = _score;
             restatbtn_Click(null, null);
 
-            if (txtnameinput.Text.Contains(":") || txtnameinput.Text.Contains(";") || txtnameinput.Text.Length < 1)
+            if (txtnameinput.Text.Contains(":") || txtnameinput.Text.Contains(";") || txtnameinput.Text.Length < 1 || txtnameinput.Text.Length > 10)
             {
                 txtnameinput.Text = "Player";
             }
@@ -583,6 +583,7 @@ namespace ColorJunction
 
         }
 
+        /* Display highscore to the left */
         private void updateHighScore() 
         {
             txtHighscore.Text = "Highscore\n";
@@ -609,6 +610,7 @@ namespace ColorJunction
 
         }
 
+        /* Returns true if passed rectangle is a valid move */
         bool isValidMove(Rectangle testRectangle)
         {
 
@@ -631,6 +633,7 @@ namespace ColorJunction
             return false;
         }
 
+        /* Returns Rectangle at passed column and row */
         Rectangle getRectangle(int column, int row)
         {
             var selectedItems = gameGrid.Children.Cast<Rectangle>().Where(i => Grid.GetRow(i) == row && Grid.GetColumn(i) == column);
@@ -643,6 +646,7 @@ namespace ColorJunction
             return selectedItems.ElementAt(0);
         }
 
+        /* Test function, useless in release */
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             return; // Comment to activate test keys (don't)
@@ -774,56 +778,7 @@ namespace ColorJunction
             }
         }
 
-        int getComboSize(Rectangle tRectangle) {
-
-            if (tRectangle == null)
-            {
-                return 0;
-            }
-
-            int clickedColumn = Grid.GetColumn(tRectangle);
-            int clickedRow = Grid.GetRow(tRectangle);
-
-            Queue<Rectangle> que = new Queue<Rectangle>();
-
-            que.Enqueue(tRectangle);
-
-            int combo = 0;
-
-            while (que.Count > 0)
-            {
-                Rectangle currentRect = que.Dequeue();
-
-                currentRect.Opacity = 0;
-
-                int currentRow = Grid.GetRow(currentRect);
-                int currentColumn = Grid.GetColumn(currentRect);
-
-                if (currentRect.Stroke == tRectangle.Stroke)
-                {
-                    combo++;
-                    Rectangle r;
-
-                    r = getRectangle(currentColumn, currentRow + 1); // Up
-                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
-
-                    r = getRectangle(currentColumn, currentRow - 1); // Down
-                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
-
-                    r = getRectangle(currentColumn - 1, currentRow); // Left
-                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
-
-                    r = getRectangle(currentColumn + 1, currentRow); // Right
-                    if (r != null && r.Opacity > 0) { que.Enqueue(r); }
-
-                }
-            }
-            
-            rect_MouseLeave(null, null);
-
-            return combo;
-        }
-
+        /* Displays a clickable combo (top right) */
         private void btnHint_Click(object sender, RoutedEventArgs e)
         {
             int columns = gameGrid.ColumnDefinitions.Count;
@@ -843,6 +798,7 @@ namespace ColorJunction
             }
         }
 
+        /* Pops up points at mouse location */
         private void popupPoints(int points)
         {
             scrollScore.Text = Convert.ToString(points);
@@ -858,25 +814,25 @@ namespace ColorJunction
             
         }
         
+        /* Popped points animation */
         private void movePopupPoints(Point p)
-        {
-                                  
+        {                       
             var moveAnimY = new DoubleAnimation(p.Y-50, p.Y -100, new Duration(TimeSpan.FromSeconds(5.0)));            
-            scrollScore.BeginAnimation(Canvas.TopProperty, moveAnimY);
-     
-        }
+            scrollScore.BeginAnimation(Canvas.TopProperty, moveAnimY);        }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
+        /* Exits the application */
         private void btnexit_Click(object sender, RoutedEventArgs e)
         {
             tutorialText.Height = 40;
             Application.Current.Shutdown();
         }
 
+        /* Goes back to the menu */
         private void menubtn_Click(object sender, RoutedEventArgs e)
         {
             tutorialText.Height = 40;
@@ -885,6 +841,7 @@ namespace ColorJunction
             s.Show();
         }
 
+        /* Restarts the game */
         private void restatbtn_Click(object sender, RoutedEventArgs e) 
         {
             tutorialText.Height = 40;
@@ -905,6 +862,7 @@ namespace ColorJunction
             btnHint.Visibility = Visibility.Visible;
         }
 
+        /* Drops down the rectangle at the passed column/row. dropHeight is how far to drop it */
         private bool dropDownRect(int column, int row, int dropHeight) 
         {
             Rectangle rect = getRectangle(column, row);
@@ -927,6 +885,7 @@ namespace ColorJunction
 
         }
 
+        /* Centers the score label */
         private void movelbl()
         {
             var top = Canvas.GetTop(lblScore);
@@ -948,6 +907,7 @@ namespace ColorJunction
             lblScore.BeginAnimation(Canvas.LeftProperty, moveAnimLeft);            
         }
 
+        /* Slides the passed column to the left */
         private void slideCol(int column)
         {
             Rectangle rect = getRectangle(column, 0);
@@ -982,6 +942,7 @@ namespace ColorJunction
             }
         }
 
+        /* ... */
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
             submitHighscore();
